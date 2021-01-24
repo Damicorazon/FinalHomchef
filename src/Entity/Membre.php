@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MembreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -78,6 +80,22 @@ class Membre implements UserInterface
      * @ORM\Column(type="string", length=13, nullable=true)
      */
     private $tva;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Menu::class, mappedBy="membre", orphanRemoval=true)
+     */
+    private $menus;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="membre", orphanRemoval=true)
+     */
+    private $commandes;
+
+    public function __construct()
+    {
+        $this->menus = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -261,6 +279,66 @@ class Membre implements UserInterface
     public function setTva(?string $tva): self
     {
         $this->tva = $tva;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Menu[]
+     */
+    public function getMenus(): Collection
+    {
+        return $this->menus;
+    }
+
+    public function addMenu(Menu $menu): self
+    {
+        if (!$this->menus->contains($menu)) {
+            $this->menus[] = $menu;
+            $menu->setMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMenu(Menu $menu): self
+    {
+        if ($this->menus->removeElement($menu)) {
+            // set the owning side to null (unless already changed)
+            if ($menu->getMembre() === $this) {
+                $menu->setMembre(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getMembre() === $this) {
+                $commande->setMembre(null);
+            }
+        }
 
         return $this;
     }
