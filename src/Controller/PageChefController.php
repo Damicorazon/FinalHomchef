@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AcceuilController extends AbstractController
+class PageChefController extends AbstractController
 {
     /**
-     * @Route("/", name="accueil")
+     * @Route("/chef", name="page_chef")
      */
     public function index(): Response
     {
-        return $this->render('base.html.twig', [
-            'controller_name' => 'AcceuilController',
+        return $this->render('page_chef/index.html.twig', [
+            'controller_name' => 'PageChefController',
         ]);
     }
 }

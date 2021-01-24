@@ -1,274 +1,320 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="description" content="Homchef vous propose de réserver un chef à domicile pour épater vos convives. Nos chefs s'occupent de tout, vous pourrez enfin profitez de votre soirée en toute tranquilité.">
 		<meta name="author" content="Damien Lebihan, Emeline Bonneaud, Jerome Bullet">
-<title>
-	{% block title %}HomChef-Chef à domicile{% endblock %}
-</title>
+		<title>
+			{% block title %}HomChef-Chef à domicile TEST
+			{% endblock %}
+		</title>
 
-{% block stylesheets %}
-{# {{ encore_entry_link_tags("app") }} #}
-{% endblock %}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags("app") }}
+		{% endblock %}
 
-    </head>
-    <body>
-            {# NAV #}
+	</head>
+	<body>
+		{# NAV #}
 
-        <header>
-            {# <a href="{{ path("accueil") }}">  #}
+		<header>
+			<a href="{{ path("accueil") }}">
 				<img id="logoHeader" src="photos/header/logopaysageblanc.png" alt="Logo du site HomChef représentant une toque sur fond blanc">
 			</a>
-            <nav>
-                <ul>
-                    <li><a href="{#{{ path("app_register") }}#}" id="connection">CONNEXION</a></li>';
-                    <li class="deroulant"><a href="#">ASSISTANCE</a>
-                        <ul class="sous">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#preFooter">Téléphone</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="#lesSpecialites#}">SPECIALITES</a></li>';
-        </header>
+			<nav>
+				<ul>
+					{% if is_granted("ROLE_MEMBRE") %}
+						<li>
+							<a href="#lesSpecialites">SPECIALITES</a>
+						</li>
+						<li class="deroulant">
+							<a href="#">ASSISTANCE</a>
+							<ul class="sous">
+								<li>
+									<a href="#">FAQ</a>
+								</li>
+								<li>
+									<a href="#preFooter">Téléphone</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">MON COMPTE</a>
+						</li>
+					{% endif %}
 
-        {% for type, messages in app.flashes %}
-				<div class="alert alert-{{ type }}">
-					{% for msg in messages %}
-						{{ msg|raw }}
-					{% endfor %}
+					{% if is_granted("ROLE_CHEF") %}
+						<li class="deroulant">
+							<a href="#">ASSISTANCE</a>
+							<ul class="sous">
+								<li>
+									<a href="#">FAQ</a>
+								</li>
+								<li>
+									<a href="#preFooter">Téléphone</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">MON TABLEAU DE BORD</a>
+						</li>
+						<li>
+							<a href="#">MON COMPTE</a>
+						</li>
+					{% endif %}
+
+					{% if is_granted("IS_AUTHENTICATED_FULLY") %}
+						<li>
+							<a href="" id="#">DECONNEXION</a>
+						</li>
+						<li>
+							<a href="#">{{ app.user.username }}</a>
+						</li>
+
+					{% else %}
+						<li>
+							<a href="" id="connection">CONNEXION</a>
+						</li>
+						<li class="deroulant">
+							<a href="#">ASSISTANCE</a>
+							<ul class="sous">
+								<li>
+									<a href="#">FAQ</a>
+								</li>
+								<li>
+									<a href="#preFooter">Téléphone</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#lesSpecialites">SPECIALITES</a>
+						</li>
+					{% endif %}
+
+				</ul>
+			</nav>
+		</header>
+
+		{% block body %}
+
+			<!-- 1ERE PARTIE INDEX -->
+
+			<div id="imageAccueil">
+				<p id="slogan">Faites une pause, prenez un chef !</p>
+				<a href="#geoloc" id="recherche">RECHERCHE RAPIDE PAR LOCALISATION</a>
+			</div>
+			<div class="clear"></div>
+
+			<!-- PARTIE NOS SERVICES -->
+			<section id="nosServices">
+				<h2>Nos services</h2>
+				<div class="traitService moutarde"></div>
+				<div class="flex" id="lotImgServices">
+					<div>
+						<img src="/photos/index/loupe.png" alt="Logo représentant une loupe de couleur or">
+						<h3>Recherches avancées</h3>
+						<p>Recherchez un chef grâce à la recherche rapide, la localisation ou encore à partir d'une spécialité.</p>
+					</div>
+					<div>
+						<img src="/photos/index/fleche.png" alt="Logo représentant une fleche pointant vers la droite de couleur or avec un fond marron">
+						<h3>Notes et avis</h3>
+						<p>Faites nous parts de vos expériences avec les chefs en laissant une note ou un commentaire !</p>
+					</div>
+					<div>
+						<img src="/photos/index/certificat.png" alt="Logo représentant un certificat de couleur or">
+						<h3>Professionnels et particuliers</h3>
+						<p>Inscrivez vous en tant que professionnel pour pouvoir référencer votre profil de chef. Pour les particuliers,
+														                                            votre adhésion gratuite vous permettra de personnaliser votre compte!</p>
+					</div>
+					<div>
+						<img src="/photos/index/coeur.png" alt="Logo représentant un coeur de couleur marron">
+						<h3>Retrouvez-nous</h3>
+						<p>Retrouvez-nous sur vos réseaux sociaux préférés.</p>
+					</div>
 				</div>
-			{% endfor %}
+			</section>
 
-        {% block body %}
+			<!-- PARTIE GEOLOC -->
+			<section id="geoloc" class="flex">
+				<h2>Géolocalisation</h2>
+				<div class="traitgeo"></div>
+				<p class="PremierTextGeo">Retrouvez nos Chefs vedettes de la semaine</p>
+				<div class="partie2Geo flex">
+					<div id="map" class="flex">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5653620.942475821!2d2.0516999500000006!3d46.219264949999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1605636580509!5m2!1sfr!2sfr" width="70%" height="600px" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+					</div>
+					<div class="profilGeo">
+						<img src="/photos/index/damiensimon.png" class="imgGeo" alt="Image de profil représentant Damien Simon l'un des chefs vedette de la semaine">
+						<p>
+							<span>Damien simon</span><br>
+							Gastronomie Française</p>
+					</div>
+					<div class="profilGeo2">
+						<img src="/photos/index/damiensimon.png" class="imgGeo" alt="Image de profil représentant Damien Simon l'un des chefs vedette de la semaine">
+						<p>
+							<span>Damien simon</span><br>
+							Gastronomie Française</p>
+					</div>
+					<div class="profilGeo3">
+						<img src="/photos/index/damiensimon.png" class="imgGeo" alt="Image de profil représentant Damien Simon l'un des chefs vedette de la semaine">
+						<p>
+							<span>Damien simon</span><br>
+							Gastronomie Française</p>
+					</div>
+				</div>
+			</section>
 
-            <!-- 1ERE PARTIE INDEX -->
+			<!-- PARTIE LES SPECIALITES -->
+			<section
+				id="lesSpecialites">
+				<!--div spécialités avec liens-->
+				<div class="blocImage">
+					<h2>Les spécialités de nos chefs</h2>
+					<div class="traitService moutarde"></div>
+				</div>
+				<div id="box">
+					<a class="speChef1" href=" {{path("specialites")}} ">
+						<img src="/photos/index/chinois.png" alt="spécialités chinoises"/>
+						<span class="speChef">Chinois</span>
+					</a>
+					<a class="speChef1" href="{{path("specialites")}}">
+						<img src="/photos/index/americain.png" alt="spécialités américaines"/>
+						<span class="speChef">Américain</span>
+					</a>
+					<a class="speChef1" href="{{path("specialites")}}">
+						<img src="/photos/index/baggle.png" alt="spécialités baggles"/>
+						<span class="speChef">Bagel</span>
+					</a>
+					<a class="speChef1" href="{{path("specialites")}}">
+						<img src="/photos/index/mexicain.png" alt="spécialités mexicaines"/>
+						<span class="speChef">Mexicain</span>
+					</a>
+					<a class="speChef1" href="{{path("specialites")}}">
+						<img src="/photos/index/japonais.png" alt="spécialités japonaises"/>
+						<span class="speChef">Japonais</span>
+					</a>
+					<a class="speChef1" href="{{path("specialites")}}">
+						<img src="/photos/index/italien.png" alt="spécialités italiennes"/>
+						<span class="speChef">Italien</span>
+					</a>
+					<a class="speChef1" href="{{path("specialites")}}">
+						<img src="/photos/index/francais.png" alt="spécialités françaises"/>
+						<span class="speChef">Français</span>
+					</a>
+					<a class="speChef1" href="{{path("specialites")}}">
+						<img src="/photos/index/vegetarien.png" alt="spécialités végétariennes"/>
+						<span class="speChef">Végétarien</span>
+					</a>
+				</div>
+			</section>
 
-            <div id="imageAccueil">
-                <p id="slogan">Faites une pause, prenez un chef !</p>
-                <a href="#geoloc" id="recherche">RECHERCHE RAPIDE PAR LOCALISATION</a>
-            </div>
-            <div class="clear"></div>
-
-            <!-- PARTIE NOS SERVICES -->
-            <section id="nosServices">
-                <h2>Nos services</h2>
-                <div class="traitService moutarde"></div>
-                <div class="flex" id="lotImgServices">
-                    <div>
-                        <img src="/photos/index/loupe.png" alt="Logo représentant une loupe de couleur or">
-                        <h3>Recherches avancées</h3>
-                        <p>Recherchez un chef grâce à la recherche rapide, la localisation ou encore à partir d'une spécialité.</p>
-                    </div>
-                    <div>
-                        <img src="/photos/index/fleche.png" alt="Logo représentant une fleche pointant vers la droite de couleur or avec un fond marron">
-                        <h3>Notes et avis</h3>
-                        <p>Faites nous parts de vos expériences avec les chefs en laissant une note ou un commentaire !</p>
-                    </div>
-                    <div>
-                        <img src="/photos/index/certificat.png" alt="Logo représentant un certificat de couleur or">
-                        <h3>Professionnels et particuliers</h3>
-                        <p>Inscrivez vous en tant que professionnel pour pouvoir référencer votre profil de chef. Pour les particuliers,
-                                            votre adhésion gratuite vous permettra de personnaliser votre compte!</p>
-                    </div>
-                    <div>
-                        <img src="/photos/index/coeur.png" alt="Logo représentant un coeur de couleur marron">
-                        <h3>Retrouvez-nous</h3>
-                        <p>Retrouvez-nous sur vos réseaux sociaux préférés.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- PARTIE GEOLOC -->
-            <section id="geoloc" class="flex">
-                <h2>Géolocalisation</h2>
-                <div class="traitgeo"></div>
-                <p class="PremierTextGeo">Retrouvez nos Chefs vedettes de la semaine</p>
-                <div class="partie2Geo flex">
-                    <div id="map" class="flex">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5653620.942475821!2d2.0516999500000006!3d46.219264949999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sfr!4v1605636580509!5m2!1sfr!2sfr" width="70%" height="600px" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                    </div>
-                    <div class="profilGeo">
-                        <img src="/photos/index/damiensimon.png" class="imgGeo" alt="Image de profil représentant Damien Simon l'un des chefs vedette de la semaine">
-                        <p>
-                            <span>Damien simon</span><br>
-                            Gastronomie Française</p>
-                    </div>
-                    <div class="profilGeo2">
-                        <img src="/photos/index/damiensimon.png" class="imgGeo" alt="Image de profil représentant Damien Simon l'un des chefs vedette de la semaine">
-                        <p>
-                            <span>Damien simon</span><br>
-                            Gastronomie Française</p>
-                    </div>
-                    <div class="profilGeo3">
-                        <img src="/photos/index/damiensimon.png" class="imgGeo" alt="Image de profil représentant Damien Simon l'un des chefs vedette de la semaine">
-                        <p>
-                            <span>Damien simon</span><br>
-                            Gastronomie Française</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- PARTIE LES SPECIALITES -->
-            <section
-                id="lesSpecialites">
-                <!--div spécialités avec liens-->
-                <div class="blocImage">
-                    <h2>Les spécialités de nos chefs</h2>
-                    <div class="traitService moutarde"></div>
-                </div>
-                <div id="box">
-                    <a class="speChef1" href=" {{path("specialites")}} ">
-                        <img src="/photos/index/chinois.png" alt="spécialités chinoises"/>
-                        <span class="speChef">Chinois</span>
-                    </a>
-                    <a class="speChef1" href="{{path("specialites")}}">
-                        <img src="/photos/index/americain.png" alt="spécialités américaines"/>
-                        <span class="speChef">Américain</span>
-                    </a>
-                    <a class="speChef1" href="{{path("specialites")}}">
-                        <img src="/photos/index/baggle.png" alt="spécialités baggles"/>
-                        <span class="speChef">Bagel</span>
-                    </a>
-                    <a class="speChef1" href="{{path("specialites")}}">
-                        <img src="/photos/index/mexicain.png" alt="spécialités mexicaines"/>
-                        <span class="speChef">Mexicain</span>
-                    </a>
-                    <a class="speChef1" href="{{path("specialites")}}">
-                        <img src="/photos/index/japonais.png" alt="spécialités japonaises"/>
-                        <span class="speChef">Japonais</span>
-                    </a>
-                    <a class="speChef1" href="{{path("specialites")}}">
-                        <img src="/photos/index/italien.png" alt="spécialités italiennes"/>
-                        <span class="speChef">Italien</span>
-                    </a>
-                    <a class="speChef1" href="{{path("specialites")}}">
-                        <img src="/photos/index/francais.png" alt="spécialités françaises"/>
-                        <span class="speChef">Français</span>
-                    </a>
-                    <a class="speChef1" href="{{path("specialites")}}">
-                        <img src="/photos/index/vegetarien.png" alt="spécialités végétariennes"/>
-                        <span class="speChef">Végétarien</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- PARTIE AVIS -->
-            <section id="avis">
-                <div class="blocImage">
-                    <h2 id="comment">Les hôtes partagent leurs expériences</h2>
-                    <div class="traitService1 moutarde"></div>
-                </div>
-                <!-- Theme Boostrap pour le carousel + css dans assets et css boostrap-->
-                <div>
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#FFFFFF"/></svg>
-                                <div class="container">
-                                    <div class="carousel-caption text-left">
-                                        <h1 class="nomAvis">Mr X.</h1>
-                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#FFFFFF"/></svg>
-                                <div class="container">
-                                    <div class="carousel-caption">
-                                        <h1 class="nomAvis">Mme Y</h1>
-                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="80%" fill="#FFFFFF"/></svg>
-                                <div class="container">
-                                    <div class="carousel-caption text-right">
-                                        <h1 class="nomAvis">Pauleta</h1>
-                                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        {% endblock %}
-
-            <footer>
-                <section id="preFooter">
-                    <h2>Besoin d’informations ? Contactez-nous au 01 39 00 56 78</h2>
-                </section>
-                <section id="centreFooter" class="flex">
-                    <div id="centreFoot1" class="flex">
-                        <img src="/photos/footer/logoportraitblanc.png" alt="Logo du site HomChef représentant une toque sur fond blanc" id="logoSiteFoot">
-                        <p>1 rue Pasquier<br>
-                            75008 PARIS<br>
-                            01 39 00 56 78
-                        </p>
-                        <div class="reseauFoot flex">
-                            <a href="https://fr-fr.facebook.com/" target="_blank"><img src="/photos/footer/facebook.png" alt="Logo Facebook"></a>
-                            <a href="https://twitter.com" target="_blank"><img src="/photos/footer/twitter.png" alt="Logo Twitter"></a>
-                            <a href="https://instagram.com" target="_blank"><img src="/photos/footer/instagram.png" alt="Logo Instagram"></a>
-                            <a href="https://pinterest.com/" target="_blank"><img src="/photos/footer/pinterest.png" alt="Logo Pinterest"></a>
-                        </div>
-                    </div>
-                    <div id="centreFoot2">
-                        <div class="traitFoot"></div>
-                        <h3 class="h3Foot">Général</h3>
-                        <div id="premierLienFoot" class="flex">
-                            <a href="index.php">Accueil</a><br>
-                            <a id="connection2" href="#menu">Connexion</a><br>
-                            <a href="recrutement.php">Recrutement</a><br>
-                            <a href=" {#{{ path("app_register") }} #}">Vous êtes chef?</a>
-                        </div>
-                    </div>
-                    <div id="centreFoot3">
-                        <div class="traitFoot"></div>
-                        <h3 class="h3Foot">Ou sommes nous</h3>
-                        <div id="deuxiemeLienFoot" class="flex">
-                            <a href="">Paris</a><br>
-                            <a href="">Marseille</a><br>
-                            <a href="">Lyon</a><br>
-                            <a href="">Bordeaux</a><br>
-                        </div>
-                    </div>
-                    <div id="centreFoot4">
-                        <div class="traitFoot"></div>
-                        <h3 class="h3Foot">Autres</h3>
-                        <div id="troisiemeLienFoot" class="flex">
-                            <a href="">Blog et actu</a><br>
-                            <a href="cgv.php">Conditions générales de vente</a><br>
-                            <a href="cgv.php">Mentions légales</a><br>
-                        </div>
-                    </div>
-                </section>
-                <div id="finFooter">
-                    <div class="copyright">Copyright © HomChef</div>
-                </div>
-            </footer>
-
-    {% block javascripts %}
-    {# {{ encore_entry_script_tags("app") }} #}
-    {% endblock %}
-
-    </body>
-</html>
+			<!-- PARTIE AVIS -->
+			<section id="avis">
+				<div class="blocImage">
+					<h2 id="comment">Les hôtes partagent leurs expériences</h2>
+					<div class="traitService1 moutarde"></div>
+				</div>
+				<!-- Theme Boostrap pour le carousel + css dans assets et css boostrap-->
+				<div>
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+						</ol>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#FFFFFF"/></svg>
+								<div class="container">
+									<div class="carousel-caption text-left">
+										<h1 class="nomAvis">Mr X.</h1>
+										<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"</p>
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#FFFFFF"/></svg>
+								<div class="container">
+									<div class="carousel-caption">
+										<h1 class="nomAvis">Mme Y</h1>
+										<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"</p>
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="80%" fill="#FFFFFF"/></svg>
+								<div class="container">
+									<div class="carousel-caption text-right">
+										<h1 class="nomAvis">Pauleta</h1>
+										<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+			</section>
+		</body>
+	</html>
+</div>{% endblock %}<footer>
+<section id="preFooter">
+	<h2>Besoin d’informations ? Contactez-nous au 01 39 00 56 78</h2>
+</section>
+<section id="centreFooter" class="flex">
+	<div id="centreFoot1" class="flex">
+		<img src="/photos/footer/logoportraitblanc.png" alt="Logo du site HomChef représentant une toque sur fond blanc" id="logoSiteFoot">
+		<p>1 rue Pasquier<br>
+			75008 PARIS<br>
+			01 39 00 56 78
+		</p>
+		<div class="reseauFoot flex">
+			<a href="https://fr-fr.facebook.com/" target="_blank"><img src="/photos/footer/facebook.png" alt="Logo Facebook"></a>
+			<a href="https://twitter.com" target="_blank"><img src="/photos/footer/twitter.png" alt="Logo Twitter"></a>
+			<a href="https://instagram.com" target="_blank"><img src="/photos/footer/instagram.png" alt="Logo Instagram"></a>
+			<a href="https://pinterest.com/" target="_blank"><img src="/photos/footer/pinterest.png" alt="Logo Pinterest"></a>
+		</div>
+	</div>
+	<div id="centreFoot2">
+		<div class="traitFoot"></div>
+		<h3 class="h3Foot">Général</h3>
+		<div id="premierLienFoot" class="flex">
+			<a href="index.php">Accueil</a><br>
+			<a id="connection2" href="#menu">Connexion</a><br>
+			<a href="recrutement.php">Recrutement</a><br>
+			<a href="#">Vous êtes chef?</a>
+		</div>
+	</div>
+	<div id="centreFoot3">
+		<div class="traitFoot"></div>
+		<h3 class="h3Foot">Ou sommes nous</h3>
+		<div id="deuxiemeLienFoot" class="flex">
+			<a href="">Paris</a><br>
+			<a href="">Marseille</a><br>
+			<a href="">Lyon</a><br>
+			<a href="">Bordeaux</a><br>
+		</div>
+	</div>
+	<div id="centreFoot4">
+		<div class="traitFoot"></div>
+		<h3 class="h3Foot">Autres</h3>
+		<div id="troisiemeLienFoot" class="flex">
+			<a href="">Blog et actu</a><br>
+			<a href="cgv.php">Conditions générales de vente</a><br>
+			<a href="cgv.php">Mentions légales</a><br>
+		</div>
+	</div>
+</section>
+<div id="finFooter">
+	<div class="copyright">Copyright © HomChef</div>
+</div></footer>{% block javascripts %}
+{{ encore_entry_script_tags("app") }}{% endblock %}</body></html>
 

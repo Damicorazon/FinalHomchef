@@ -70,20 +70,22 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
-.copyFiles({
-    from: './assets/photos',
 
-    // optional target path, relative to the output dir
-    to: '../photos/[path][name].[ext]',
+    .copyFiles({
+        from: './assets/photos',
 
-    /*
-    // if versioning is enabled, add the file hash too
-    //to: 'images/[path][name].[hash:8].[ext]',
+        // optional target path, relative to the output dir
+        to: '../photos/[path][name].[ext]',
 
-    // only copy files matching this pattern
-    //pattern: /\.(png|jpg|jpeg)$/
-    */
-})
-;
+        /*
+        // if versioning is enabled, add the file hash too
+        //to: 'images/[path][name].[hash:8].[ext]',
+
+        // only copy files matching this pattern
+        //pattern: /\.(png|jpg|jpeg)$/
+        */
+    })
+    ;
+
 
 module.exports = Encore.getWebpackConfig();
