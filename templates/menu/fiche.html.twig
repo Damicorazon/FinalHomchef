@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche Menu{% endblock %}
+
+{% block body %}
+    <ul class="tableMenu">
+    <li class="ficheMenu">
+        <strong>Identifiant :</strong> {{ menu.id}}
+    </li>
+    <li class="ficheMenu">
+        <strong>Nom :</strong> {{ menu.nom }}
+    </li>
+    <li class="ficheMenu">
+        <strong>Spécialités :</strong> {{ menu.specialite}}
+    </li>
+    <li class="ficheMenu">
+        <strong>Entrée :</strong> {{ menu.entree}}
+    </li>
+    <li class="ficheMenu">
+        <strong>Plat :</strong> {{ menu.plat}}
+    </li>
+    <li class="ficheMenu">
+        <strong>Dessert :</strong> {{ menu.dessert}}
+    </li>
+    <li class="ficheMenu">
+        <strong>Prix :</strong> {{ menu.prix}}
+    </li>
+    <li class="ficheMenu">
+        <strong>Photo</strong>
+        <img src="{{ asset("img/" ~ menu.photo) }}" alt="pas de photo">
+    </li>
+    </ul>
+
+  </table>
+
+
+    <a href="{{ path('menu') }}">Retour à la liste des Menus</a>
+
+{% endblock %}

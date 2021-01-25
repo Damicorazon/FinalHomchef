@@ -1471,7 +1471,7 @@ input::placeholder {
   padding-bottom: 6%;
 }
 #prixInclus i, #garanties i{
-  color:##6AD566;
+  color:#6AD566;
   padding-left: 12%;
 }
 #prixInclus p, #garanties p{
@@ -1502,6 +1502,34 @@ input::placeholder {
 }
 #footerReservation{
 
+}
+
+.tableMenu{
+	margin: 100px auto 50px auto;
+	table-layout: fixed;
+  width: 80%;
+  border-collapse: collapse;
+  border: 3px solid rgb(3, 3, 3);
+}
+
+.theadMenu:nth-child(1) {
+  width: 30%;
+}
+
+.contourMenuG {
+border-collapse: collapse;
+border: 1px solid black;
+}
+
+.contourMenu {
+	padding: 5px;
+	border-right: 1px solid black;
+	overflow-wrap: break-word;
+	text-align: center;
+}
+
+.ficheMenu{
+	padding: 5px;
 }
 
 /*******************RESPONSIVE************************/
