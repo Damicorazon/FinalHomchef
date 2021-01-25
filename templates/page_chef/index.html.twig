@@ -9,8 +9,10 @@
 		<div id="contenu">
 			<aside id="aside">
 				<div id="photoEtAvis">
-					<img src="photos/pageChefs/damiensimon.png" alt="photo du chef Damien Simon" id="photoDamienSimon">
-					<h3>Damien Simon</h3>
+
+					{% for membre in membres %}
+						<img src="photos/pageChefs/damiensimon.png" alt="photo du chef Damien Simon" id="photoDamienSimon">
+					<h3> {{membre.prenom}} {{membre.nom}} </h3>
 					<p>"Spécialisé en cuisine française !"</p>
 					<div id="etoiles" class="flex">
 						<div class="etoileJaune">
@@ -41,6 +43,9 @@
 					<h4>TYPES DE CUISINE</h4>
 					<p>Cuisine du marché, végétarienne, cocktail, brunch, française et italienne</p>
 				</div>
+					{% endfor %}
+
+
 			</aside>
 			<main id="pageDesChefs" class="flex">
 				<div class="menus">
