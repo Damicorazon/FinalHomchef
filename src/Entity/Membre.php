@@ -91,6 +91,21 @@ class Membre implements UserInterface
      */
     private $commandes;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $descriptif;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $langue;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $zone;
+
     public function __construct()
     {
         $this->menus = new ArrayCollection();
@@ -339,6 +354,42 @@ class Membre implements UserInterface
                 $commande->setMembre(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescriptif(): ?string
+    {
+        return $this->descriptif;
+    }
+
+    public function setDescriptif(?string $descriptif): self
+    {
+        $this->descriptif = $descriptif;
+
+        return $this;
+    }
+
+    public function getLangue(): ?string
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(?string $langue): self
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getZone(): ?string
+    {
+        return $this->zone;
+    }
+
+    public function setZone(?string $zone): self
+    {
+        $this->zone = $zone;
 
         return $this;
     }
