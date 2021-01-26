@@ -25,7 +25,7 @@ class MenuType extends AbstractType
                         "maxMessage" => "Le nom ne peut comporter que {{ limit }} caractères"
                     ]),
                     new NotBlank([ "message" => "Le nom ne peut pas être vide" ])
-                ] 
+                ]
              ])
             ->add('specialite')
             ->add('entree', TextType::class, [
@@ -48,7 +48,11 @@ class MenuType extends AbstractType
                     ])
                 ]
             ])
-            ->add("enregistrer", SubmitType::class)
+            ->add('enregistrer', SubmitType::class, [
+                "attr" => [
+                    "class" => "btn btn-info"
+                ]
+            ])
         ;
     }
 
