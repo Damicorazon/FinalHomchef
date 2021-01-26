@@ -13,7 +13,6 @@ import './app.js';
 import './bootstrap';
 
 window.addEventListener("load", function(){
-
 //PAGE D'ACCUEIL :
 
 // MENU BURGER :

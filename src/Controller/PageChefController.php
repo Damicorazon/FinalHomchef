@@ -17,7 +17,6 @@ class PageChefController extends AbstractController
      */
     public function show(Membre $m): Response
     {
-
         return $this->render('page_chef/index.html.twig', [
             'membre' => $m,
         ]);
