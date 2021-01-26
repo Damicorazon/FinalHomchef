@@ -1,4 +1,10 @@
+
+$primary: #34495E;
+$info: #D1920E;
+
 @import "~bootstrap/scss/bootstrap";
+
+
 
 *{
 	margin: 0;
@@ -26,6 +32,7 @@ header{
 #logoHeader{
 	width:9%;
 	padding: 0.6% 0% 0% 9%;
+
 	box-sizing: initial;
 }
 nav{
@@ -39,6 +46,7 @@ nav ul{
 }
 nav ul li {
   float: right;
+
   text-align: center;
   position: relative;
 }
@@ -1538,6 +1546,7 @@ border: 1px solid black;
 	width: 90px;
 }
 
+
 /*******************PAGE MENU (BACK OFFICE CHEF)************************/
 
 #bodyMenu {
@@ -2156,5 +2165,4 @@ header{
 	padding: 15px;
 }
 }
-
 
