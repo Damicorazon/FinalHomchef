@@ -56,9 +56,9 @@
 								</li>
 							</ul>
 						</li>
-						<li>
-							<a href="#">MON TABLEAU DE BORD</a>
-						</li>
+							<li>
+								<a href="{{ path("menu") }}">MES MENUS</a>
+							</li>
 						<li>
 							<a href="#">MON COMPTE</a>
 						</li>
@@ -95,6 +95,14 @@
 				</ul>
 			</nav>
 		</header>
+
+		{% for type, messages in app.flashes %}
+				<div class="{{ type }}">
+					{% for msg in messages %}
+						{{ msg|raw }}
+					{% endfor %}
+				</div>
+			{% endfor %}
 
 		{% block body %}
 

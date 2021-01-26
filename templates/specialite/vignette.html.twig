@@ -1,0 +1,14 @@
+<div class="colonneSpe flex">
+    <div class="centreImgSpe">
+        <img src="photos/pageSpecialites/beau-et-bon.jpg" alt="poêlé de riz et du poulet dans une poele">
+        <p class="centreTextP">{{ menu.nom}}</p>
+        <a href="#" class="centreTextChef">Chef {{menu.membre.nom}}</a>
+    </div>
+    <div class="colonnePrixSpe">
+        <div class="prix2">
+            <span>{{ menu.prix}}€</span>
+            par personne</div>
+        <a href="{{ path("page_chef") }}" class="voirMenuSpe">Voir menu</a>
+    </div>
+</div>
+<div class="espaceSpe"></div>
