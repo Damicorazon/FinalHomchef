@@ -12,7 +12,7 @@ import './app.js';
 // start the Stimulus application
 import './bootstrap';
 
-
+window.addEventListener("load", function(){
 //PAGE D'ACCUEIL :
 
 // MENU BURGER :
@@ -277,3 +277,4 @@ function connec(){
 
 /**************************** COOKIES ******************************/
 
+});

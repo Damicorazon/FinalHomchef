@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h3>Etes vous sur de vouloir supprimer le menu n°{{ menu.id }}</h3>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Nom : </strong>{{ menu.nom }}</li>
+      <li class="list-group-item"><strong> Spécialité : </strong>{{ menu.specialite }}</li>
+    </ul>
+
+    <form method="POST">
+      <button type="submit" class="btn btn-success">Confirmer</button>
+      <a href="{{ path("menu") }}" class="btn btn-danger">Annuler</a>
+    </form>
+{% endblock %}
