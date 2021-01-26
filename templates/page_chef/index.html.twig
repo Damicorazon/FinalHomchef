@@ -10,12 +10,12 @@
 			<aside id="aside">
 				<div id="photoEtAvis">
 
-					{% for membre in membres %}
-						{% if membre.descriptif is not null %}
+					{% for chef in membre %}
+						{# {% if chef.descriptif is not null %} #}
 						<img src="photos/pageChefs/damiensimon.png" alt="photo du chef Damien Simon" id="photoDamienSimon">
 						<h3>
-							{{membre.prenom}}
-							{{membre.nom}}
+							{{chef.prenom}}
+							{{chef.nom}}
 						</h3>
 						<p>"Spécialisé en cuisine  !"</p>
 						<div id="etoiles" class="flex">
@@ -40,18 +40,18 @@
 					<div id="descriptionChef">
 						<h4>A PROPOS DU CHEF</h4>
 						<P>
-							{{membre.descriptif}}
+							{{chef.descriptif}}
 						</P>
 						<h4>ZONE DESSERVIE</h4>
-						<p>{{membre.zone}}</p>
+						<p>{{chef.zone}}</p>
 						<h4>LANGUES PARLÉES</h4>
-						<p>{{membre.langue}}</p>
-					{% endif %}
+						<p>{{chef.langue}}</p>
+					{# {% endif %} #}
 				{% endfor %}
-
-				{# {% for menu in menus %}
+{#
+				{% for menu in menus %}
 						<h4>SPECIALITES</h4>
-						<p>{{menu.membre.specialite}}</p>
+						<p>{{menu.specialite}}</p>
 						{% endfor %} #}
 
 

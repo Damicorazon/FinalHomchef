@@ -8,22 +8,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\MenuRepository;
 use App\Repository\MembreRepository;
 use App\Entity\Membre;
+use App\Entity\Menu;
 
 class PageChefController extends AbstractController
 {
     /**
-     * @Route("/chef", name="page_chef")
+     * @Route("/chef/{id}", name="page_chef", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function index(MenuRepository $menu): Response
+    public function show(Membre $m): Response
     {
 
-        $membre = $this->getUser();
-        dd($menu->);
-        $menu_specialite = $menu->findByjointMembreMenu($membre->getUsername());
-
         return $this->render('page_chef/index.html.twig', [
-            'membres' => $membre,
-            'menus' => $menu_specialite
+            'membre' => $m,
         ]);
     }
 }

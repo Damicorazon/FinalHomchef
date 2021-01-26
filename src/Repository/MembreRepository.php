@@ -41,21 +41,21 @@ class MembreRepository extends ServiceEntityRepository implements PasswordUpgrad
         $this->_em->flush();
     }
 
-    public function findByjointMembreMenu()
-    {
-        /*
-            SELECT
-            FROM membre as me
-            JOIN menu as m ON me.id = m.membre_id
-        */
+    // public function findByjointMembreMenu()
+    // {
+    //     /*
+    //         SELECT
+    //         FROM membre as me
+    //         JOIN menu as m ON me.id = m.membre_id
+    //     */
 
 
-        return $this->createQueryBuilder('m')
-            ->join(Membre::class, "me", "WITH", "m.id = me.membre")
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult();
-    }
+    //     return $this->createQueryBuilder('m')
+    //         ->join(Membre::class, "me", "WITH", "m.id = me.membre")
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult();
+    // }
 
     // /**
     //  * @return Membre[] Returns an array of Membre objects
