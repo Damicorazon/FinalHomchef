@@ -13,17 +13,9 @@
             Vous êtes déjà connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">se déconnecter</a>
         </div>
     {% endif %}
-
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
-    <p>ferfzfzfzfzf</p>
+<table class="tableMenu">
+        <thead class="theadMenu">
+            <th class="contourMenu">
     <h1 class="h3 mb-3 font-weight-normal">Veuillez vous identifier</h1>
     <label for="inputPseudo">Pseudo</label>
     <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" required autofocus>
@@ -48,5 +40,8 @@
     <button class="btn btn-lg btn-primary" type="submit">
         Connexion
     </button>
+                </th>
+        </thead>
+</table>
 </form>
 {% endblock %}
