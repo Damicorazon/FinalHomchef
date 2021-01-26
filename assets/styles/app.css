@@ -1500,9 +1500,9 @@ input::placeholder {
 .fondGris{
   background: #F4F0F0;
 }
-#footerReservation{
 
-}
+
+/*******************TABLEAU DE BORD************************/
 
 .tableMenu{
 	margin: 200px auto 50px auto;
@@ -1530,6 +1530,10 @@ border: 1px solid black;
 
 .ficheMenu{
 	padding: 5px;
+}
+
+.BoardPhoto{
+	width: 90px;
 }
 
 /*******************RESPONSIVE************************/

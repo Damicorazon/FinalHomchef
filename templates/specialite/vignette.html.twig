@@ -1,6 +1,6 @@
 <div class="colonneSpe flex">
     <div class="centreImgSpe">
-        <img src="photos/pageSpecialites/beau-et-bon.jpg" alt="poêlé de riz et du poulet dans une poele">
+        <img src="{{ asset("img/" ~ menu.photo) }}" alt="poêlé de riz et du poulet dans une poele">
         <p class="centreTextP">{{ menu.nom}}</p>
         <a href="#" class="centreTextChef">Chef {{menu.membre.nom}}</a>
     </div>

@@ -3,5 +3,12 @@
 {% block title %}Ajouter Menu{% endblock %}
 
 {% block body %}
-  {{ form(formMenu) }}
+
+<table class="tableMenu">
+  <thead class="theadMenu">
+    <th class="contourMenu">
+      {{ form(formMenu) }}
+    </th>
+   </thead>
+</table>
 {% endblock %}
