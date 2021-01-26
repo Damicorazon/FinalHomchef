@@ -3,8 +3,23 @@
 {% block title %}Liste Menu{% endblock %}
 
 {% block body %}
-<table class="tableMenu">
-        <thead class="theadMenu">
+
+<body id="bodyMenu">
+
+<h1>Gestion des menus</h1>
+
+<ul class="nav nav-tabs">
+	<li>
+		<a href="{{ path("menu") }}" class="nav-link active">Liste des menus</a>
+	</li>
+	<li>
+		<a href="{{ path("menu_ajouter") }}" class="nav-link">Ajouter un menu</a>
+	</li>
+</ul>
+
+<table class="table table-bordered table-striped tableMenu">
+
+        <thead class="thead-dark theadMenu">
             <tr>
                 <th class="contourMenu">ID</th>
                 <th class="contourMenu">Nom</th>
@@ -19,7 +34,7 @@
         </thead>
 
         <tbody>
-            
+
         {% for menu in menus %}
             <tr class="contourMenuG">
                 <td class="contourMenu">{{ menu.id }}</td>
@@ -41,8 +56,10 @@
                 </td>
             </tr>
         {% endfor %}
-            
+
         </tbody>
     </table>
 <a href=" {{ path("menu_ajouter") }}">Ajouter un menu</a>
+</body>
+
 {% endblock %}

@@ -10,9 +10,11 @@ import './styles/app.scss';
 import './app.js';
 
 // start the Stimulus application
+
 // import './bootstrap';
 
 // start the Stimulus application
+
 const $ = require('jquery');  // il faut que jquery soit appelé avant bootstrap
 require('bootstrap');
 

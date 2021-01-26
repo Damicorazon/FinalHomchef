@@ -1,7 +1,9 @@
+
 $primary: #34495E;
 $info: #D1920E;
 
 @import "~bootstrap/scss/bootstrap";
+
 
 
 *{
@@ -30,6 +32,8 @@ header{
 #logoHeader{
 	width:9%;
 	padding: 0.6% 0% 0% 9%;
+
+	box-sizing: initial;
 }
 nav{
 	float: right;
@@ -42,7 +46,7 @@ nav ul{
 }
 nav ul li {
   float: right;
-  width: 30%;
+
   text-align: center;
   position: relative;
 }
@@ -351,7 +355,7 @@ body{
 
 footer{
   width: 100%;
-  background-color: rgba(0,0,0, 0.8)
+  background-color: rgba(0,0,0,0.8)
 }
 .h3Foot{
   color: #d1920e;
@@ -1542,6 +1546,13 @@ border: 1px solid black;
 	width: 90px;
 }
 
+
+/*******************PAGE MENU (BACK OFFICE CHEF)************************/
+
+#bodyMenu {
+	margin-top: 10%;
+}
+
 /*******************RESPONSIVE************************/
 
 @media  screen and (max-width: 915px){
@@ -2154,3 +2165,4 @@ header{
 	padding: 15px;
 }
 }
+
