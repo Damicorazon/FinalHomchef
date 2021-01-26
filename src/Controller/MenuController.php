@@ -24,7 +24,7 @@ class MenuController extends AbstractController
         ]);
     }
 
-    /** 
+    /**
      * @Route("/menu/fiche/{id}", name="menu_fiche")
      */
     public function fiche(MenuRepository $menu, $id)

@@ -20,7 +20,7 @@
 
 		<header>
 			<a href="{{ path("accueil") }}">
-				<img id="logoHeader" src="{{ asset("photos/header/logopaysageblanc.png") }}" alt="Logo du site HomChef représentant une toque sur fond blanc">
+			<img id="logoHeader" src="{{ asset("photos/header/logopaysageblanc.png") }}" alt="Logo du site HomChef représentant une toque sur fond blanc">
 			</a>
 			<nav>
 				<ul>
@@ -91,9 +91,10 @@
 							<a href="#lesSpecialites">SPECIALITES</a>
 						</li>
 					{% endif %}
-
 				</ul>
 			</nav>
+			<img src="photos/header/burger.png" id="burger" class="mobile" alt="Icone avec trois traits blanc horizontaux">
+
 		</header>
 
 		{% for type, messages in app.flashes %}
@@ -124,7 +125,7 @@
 				</div>
 				<h2>Quel plaisir de vous revoir!</h2>
 				<form id="formulaire">
-					<div class="flex">	
+					<div class="flex">
 						<label id="mail"></label>
 						<input type="email" class="mailForm" required placeholder="Adresse e-mail">
 						<label></label>
@@ -155,7 +156,7 @@
 						<label id="prenom"></label>
 						<input type="text" id="prenomForm" class="prenomForm" required placeholder="Prénom">
 					</div>
-					<div class="flex">	
+					<div class="flex">
 						<label id="mail1"></label>
 						<input type="email" class="mailForm1" required placeholder="Adresse e-mail">
 						<label></label>
@@ -323,6 +324,11 @@
 </section>
 <div id="finFooter">
 	<div class="copyright">Copyright © HomChef</div>
-</div></footer>{% block javascripts %}
-{{ encore_entry_script_tags("app") }}{% endblock %}</body></html>
+</div>
+</footer>
+{% block javascripts %}
+{{ encore_entry_script_tags("app") }}
+{% endblock %}
+</body>
+</html>
 

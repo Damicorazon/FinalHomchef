@@ -2,12 +2,17 @@
 
 namespace App\Repository;
 
+
 use App\Entity\Membre;
+use App\Entity\Menu;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Repository\MembreRepository;
+use App\Repository\MenuRepository;
+
 
 /**
  * @method Membre|null find($id, $lockMode = null, $lockVersion = null)
@@ -35,6 +40,22 @@ class MembreRepository extends ServiceEntityRepository implements PasswordUpgrad
         $this->_em->persist($user);
         $this->_em->flush();
     }
+
+    // public function findByjointMembreMenu()
+    // {
+    //     /*
+    //         SELECT
+    //         FROM membre as me
+    //         JOIN menu as m ON me.id = m.membre_id
+    //     */
+
+
+    //     return $this->createQueryBuilder('m')
+    //         ->join(Membre::class, "me", "WITH", "m.id = me.membre")
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult();
+    // }
 
     // /**
     //  * @return Membre[] Returns an array of Membre objects

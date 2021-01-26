@@ -19,4 +19,5 @@ class SpecialiteController extends AbstractController
             'menus' => $liste_menus,
         ]);
     }
+
 }
