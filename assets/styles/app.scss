@@ -4,8 +4,6 @@ $info: #D1920E;
 
 @import "~bootstrap/scss/bootstrap";
 
-
-
 *{
 	margin: 0;
 	padding: 0;
@@ -1514,12 +1512,12 @@ input::placeholder {
 
 /*******************TABLEAU DE BORD************************/
 
+#bodyMenu {
+	margin-top: 10%;
+}
 .tableMenu{
-	margin: 200px auto 50px auto;
 	table-layout: fixed;
-  width: 80%;
   border-collapse: collapse;
-  border: 3px solid rgb(3, 3, 3);
 }
 
 .theadMenu:nth-child(1) {
@@ -1530,28 +1528,19 @@ input::placeholder {
 border-collapse: collapse;
 border: 1px solid black;
 }
-
-.contourMenu {
-	padding: 5px;
-	border-right: 1px solid black;
-	overflow-wrap: break-word;
-	text-align: center;
-}
-
 .ficheMenu{
-	padding: 5px;
+	margin-top: 10%;
 }
 
 .BoardPhoto{
 	width: 90px;
 }
 
+.tailleImage{
+	width: 150px;
 
-/*******************PAGE MENU (BACK OFFICE CHEF)************************/
-
-#bodyMenu {
-	margin-top: 10%;
 }
+
 
 /*******************RESPONSIVE************************/
 
