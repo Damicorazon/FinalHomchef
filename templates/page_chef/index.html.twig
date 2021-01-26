@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil du chef Damien Simon
+{% block title %}Profil du chef {{membre.prenom}} {{membre.nom}}
 {% endblock %}
 
 {% block body %}
@@ -9,13 +9,10 @@
 		<div id="contenu">
 			<aside id="aside">
 				<div id="photoEtAvis">
-
-					{% for chef in membre %}
-						{# {% if chef.descriptif is not null %} #}
-						<img src="photos/pageChefs/damiensimon.png" alt="photo du chef Damien Simon" id="photoDamienSimon">
+						<img src="{{ asset("photos/pageChefs/damiensimon.png") }}"alt="photo du chef Damien Simon" id="photoDamienSimon">
 						<h3>
-							{{chef.prenom}}
-							{{chef.nom}}
+							{{membre.prenom}}
+							{{membre.nom}}
 						</h3>
 						<p>"Spécialisé en cuisine  !"</p>
 						<div id="etoiles" class="flex">
@@ -40,30 +37,25 @@
 					<div id="descriptionChef">
 						<h4>A PROPOS DU CHEF</h4>
 						<P>
-							{{chef.descriptif}}
+							{{membre.descriptif}}
 						</P>
 						<h4>ZONE DESSERVIE</h4>
-						<p>{{chef.zone}}</p>
+						<p>{{membre.zone}}</p>
 						<h4>LANGUES PARLÉES</h4>
-						<p>{{chef.langue}}</p>
-					{# {% endif %} #}
-				{% endfor %}
-{#
-				{% for menu in menus %}
+						<p>{{membre.langue}}</p>
+
+				{% for menu in membre.menus %}
 						<h4>SPECIALITES</h4>
 						<p>{{menu.specialite}}</p>
-						{% endfor %} #}
-
-
+						 {% endfor %}
 					</div>
-
-
 			</aside>
 			<main id="pageDesChefs" class="flex">
+{% for menu in membre.menus %}
 				<div class="menus">
 					<div class="premierMenu">
 						<div class="sliderimgSlider">
-							<img src="photos/pageChefs/menu1.jpg" alt="plat du chef présenté dans une assiette" class="slider-img4">
+							<img src="{{ asset("photos/pageChefs/menu1.jpg") }}" alt="plat du chef présenté dans une assiette" class="slider-img4">
 							<button class="boutonGauche" onclick="gauche4()">
 								<i class="fas fa-chevron-left"></i>
 							</button>
@@ -75,13 +67,15 @@
 							<div>
 								<p>
 									<strong>ENTRÉE</strong>
-									: Rillettes aux deux saumons, pickles de radis noir et mesclun aux herbes<br><strong>PLAT</strong>
-									: Joue de bœuf braisée au vin de truffe, spaetzles en persillade<br><strong>DESSERT</strong>
-									: Crumble aux fruits de saison.</p>
+									{{menu.entree}}<br>
+									<strong>PLAT</strong>
+									{{menu.plat}}<br>
+								<strong>DESSERT</strong>
+								{{menu.dessert}}
 							</div>
 						</div>
 						<div class="flex prix">
-							<h5>50 € / convive</h5>
+							<h5>{{menu.prix}} € par convive</h5>
 						</div>
 						<div class="bouton flex">
 							<a href=" {{ path("page_reservation") }} ">
@@ -90,68 +84,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="menus">
-					<div class="premierMenu">
-						<div class="sliderimgSlider">
-							<img src="photos/pageChefs/menu1.jpg" alt="plat du chef présenté dans une assiette" class="slider-img2">
-							<button class="boutonGauche" onclick="gauche2()">
-								<i class="fas fa-chevron-left"></i>
-							</button>
-							<button class="boutonDroite" onclick="droite2()">
-								<i class="fas fa-chevron-right"></i>
-							</button>
-						</div>
-						<div class="detailsMenu">
-							<div>
-								<p>
-									<strong>AMUSE-BOUCHE</strong>
-									: Amuse-bouche du moment<br><strong>ENTRÉE</strong>
-									: Rillettes aux deux saumons, pickles de radis noir et mesclun aux herbes<br><strong>PLAT</strong>
-									: Joue de bœuf braisée au vin de truffe, spaetzles en persillade<br><strong>DESSERT</strong>
-									: Crumble aux fruits de saison.</p>
-							</div>
-						</div>
-						<div class="flex prix">
-							<h5>50 € / convive</h5>
-						</div>
-						<div class="bouton flex">
-							<a href="{{ path("page_reservation") }}">
-								<button>CHOISIR</button>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="menus">
-					<div class="premierMenu">
-						<div class="sliderimgSlider">
-							<img src="photos/pageChefs/menu1.jpg" alt="plat du chef présenté dans une assiette" class="slider-img3">
-							<button class="boutonGauche" onclick="gauche3()">
-								<i class="fas fa-chevron-left"></i>
-							</button>
-							<button class="boutonDroite" onclick="droite3()">
-								<i class="fas fa-chevron-right"></i>
-							</button>
-						</div>
-						<div class="detailsMenu">
-							<div>
-								<p>
-									<strong>AMUSE-BOUCHE</strong>
-									: Amuse-bouche du moment<br><strong>ENTRÉE</strong>
-									: Rillettes aux deux saumons, pickles de radis noir et mesclun aux herbes<br><strong>PLAT</strong>
-									: Joue de bœuf braisée au vin de truffe, spaetzles en persillade<br><strong>DESSERT</strong>
-									: Crumble aux fruits de saison.</p>
-							</div>
-						</div>
-						<div class="flex prix">
-							<h5>50 € / convive</h5>
-						</div>
-						<div class="bouton flex">
-							<a href="{{ path("page_reservation") }}">
-								<button>CHOISIR</button>
-							</a>
-						</div>
-					</div>
-				</div>
+		{% endfor %}
+
 			</main>
 		</div>
 	</div>
