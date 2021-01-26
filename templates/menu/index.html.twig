@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 {% block title %}Hello MenuController!{% endblock %}
 
 {% block body %}
@@ -17,4 +18,52 @@
         <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/HomchefSymfony/templates/menu/index.html.twig'|file_link(0) }}">templates/menu/index.html.twig</a></code></li>
     </ul>
 </div>
+=======
+{% block title %}Liste Menu{% endblock %}
+
+{% block body %}
+<table class="tableMenu">
+        <thead class="theadMenu">
+            <tr>
+                <th class="contourMenu">ID</th>
+                <th class="contourMenu">Nom</th>
+                <th class="contourMenu">Spécialités</th>
+                <th class="contourMenu">Entrée</th>
+                <th class="contourMenu">Plat</th>
+                <th class="contourMenu">Dessert</th>
+                <th class="contourMenu">Prix</th>
+                <th class="contourMenu">Photo</th>
+                <th class="contourMenu">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+        {% for menu in menus %}
+            <tr class="contourMenuG">
+                <td class="contourMenu">{{ menu.id }}</td>
+                <td class="contourMenu">{{ menu.nom }}</td>
+                <td class="contourMenu">{{ menu.specialite }}</td>
+                <td class="contourMenu">{{ menu.entree }}</td>
+                <td class="contourMenu">{{ menu.plat }}</td>
+                <td class="contourMenu">{{ menu.dessert }}</td>
+                <td class="contourMenu">{{ menu.prix }}</td>
+                <td class="contourMenu">
+                    <img src="{{ asset("img/" ~ menu.photo) }}" alt="pas de photo">
+                </td>
+                <td class="contourMenu">
+                    {# <a href=" {{ path("livre_modifier", {"id": menu.id }) }}">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a href=" {{ path("livre_supprimer", {"id": menu.id }) }}">
+                        <i class="fa fa-trash"></i>
+                    </a> #}
+                    <a href=" {{ path("menu_fiche", {"id": menu.id }) }}">Fiche</a>
+                </td>
+            </tr>
+        {% endfor %}
+            
+        </tbody>
+    </table>
+>>>>>>> e9b06e89f047445f8a38a727447fba8536239e73
 {% endblock %}
