@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Menu;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\MenuRepository;
+use App\Repository\MembreRepository;
 use App\Form\MenuType;
 
 class MenuController extends AbstractController
@@ -62,7 +63,7 @@ class MenuController extends AbstractController
 
     /**
      * @Route("/menu/modifier/{id}", name="menu_modifier")
-     * 
+     *
      */
     public function maj(EntityManagerInterface $em, Request $request, MenuRepository $menuRepository, $id) {
         $menu = $menuRepository->find($id);
@@ -74,7 +75,7 @@ class MenuController extends AbstractController
                 $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
                 $nouveauNom = str_replace(" ", "_", $nomFichier);
                 $nouveauNom .= "_" . uniqid() . "." . $fichier->guessExtension();
-                /* le fichier uploadé est enregistré dans un dossier temporaire. On va le 
+                /* le fichier uploadé est enregistré dans un dossier temporaire. On va le
                     déplacer vers le dossier images avec le nouveau nom de fichier */
                 $fichier->move($destination, $nouveauNom);
                 $menu->setPhoto($nouveauNom);
