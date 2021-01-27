@@ -2,7 +2,7 @@
     <div class="centreImgSpe">
         <img src="{{ asset("img/" ~ menu.photo) }}" alt="poêlé de riz et du poulet dans une poele">
         <p class="centreTextP">{{ menu.nom}}</p>
-        <a href="#" class="centreTextChef">Chef {{menu.membre.nom}}</a>
+        <a href="{{ path("page_chef", {"id": menu.membre.id }) }}" class="centreTextChef">Chef {{menu.membre.pseudo}}</a>
     </div>
     <div class="colonnePrixSpe">
         <div class="prix2">

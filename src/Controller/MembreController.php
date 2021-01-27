@@ -79,7 +79,7 @@ class MembreController extends AbstractController
     }
 
     /**
-     * @Route("/menu/modifier/{id}", name="membre_modifier")
+     * @Route("/membre/modifier/{id}", name="membre_modifier")
      *
      */
     public function modifier(EntityManagerInterface $em, Request $request, MembreRepository $membreR,Encoder $encoder, $id) {
