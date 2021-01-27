@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Membre{% endblock %}
+
+{% block body %}
+<body class="bodyAjouterMenu">
+<div class="container">
+  <h1>Ajouter un membre</h1>
+
+<ul class="col-4 row justify-content-start nav nav-tabs">
+
+	<li>
+		<a href="{{ path("membre") }}" class="nav-link">
+			<strong>Liste des membre</strong>
+		</a>
+	</li>
+	<li>
+<a href="{{ path("membre_ajouter") }}" class="nav-link active">
+
+			<strong>Ajouter un membre</strong>
+		</a>
+	</li>
+</ul>
+
+{{ form_start(formMembre) }}
+
+      {{ form_widget(formMembre) }}
+
+{{ form_end(formMembre) }}
+</div>
+</body>
+{% endblock %}
+
+
+
+
