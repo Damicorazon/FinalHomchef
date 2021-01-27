@@ -9,17 +9,22 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Menu;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\MenuRepository;
-use App\Repository\MembreRepository;
 use App\Form\MenuType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+
+    /**
+     * @IsGranted("ROLE_CHEF")
+     * 
+     */
 class MenuController extends AbstractController
 {
     /**
      * @Route("/menu", name="menu")
      */
-    public function index(MenuRepository $menu): Response
+    public function index(MenuRepository $menuR): Response
     {
-        $liste_menus = $menu->findAll();
+        $liste_menus = $menuR->findAll();
         return $this->render('menu/index.html.twig', [
             'menus' => $liste_menus,
         ]);

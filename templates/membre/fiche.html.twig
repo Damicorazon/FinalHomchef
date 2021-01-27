@@ -1,37 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fiche Menu{% endblock %}
+{% block title %}Fiche Membre{% endblock %}
 
 {% block body %}
 <div class="container ficheMenu">
-<h1>Détails du menu {{ membre.nom }}</h1>
+<h1>Détails du menu {{ menu.nom }}</h1>
 
 <ul class="list-group list-group-flush">
 
     <li class="list-group-item">
-        <strong>Identifiant :</strong> {{ membre.id}}
+        <strong>Identifiant :</strong> {{ menu.id}}
     </li>
     <li class="list-group-item">
-        <strong>Nom :</strong> {{ membre.nom }}
+        <strong>Nom :</strong> {{ menu.nom }}
     </li>
     <li class="list-group-item">
-        <strong>Spécialités :</strong> {{ membre.specialite}}
+        <strong>Spécialités :</strong> {{ menu.specialite}}
     </li>
     <li class="list-group-item">
-        <strong>Entrée :</strong> {{ membre.entree}}
+        <strong>Entrée :</strong> {{ menu.entree}}
     </li>
     <li class="list-group-item">
-        <strong>Plat :</strong> {{ membre.plat}}
+        <strong>Plat :</strong> {{ menu.plat}}
     </li>
     <li class="list-group-item">
-        <strong>Dessert :</strong> {{ membre.dessert}}
+        <strong>Dessert :</strong> {{ menu.dessert}}
     </li>
     <li class="list-group-item">
-        <strong>Prix :</strong> {{ membre.prix}} €
+        <strong>Prix :</strong> {{ menu.prix}} €
     </li>
     <li class="list-group-item">
         <strong>Photo</strong>
-        <img src="{{ asset("img/" ~ membre.photo) }}" class="tailleImage" alt="pas de photo">
+        <img src="{{ asset("img/" ~ menu.photo) }}" class="tailleImage" alt="pas de photo">
     </li>
     </ul>
 
