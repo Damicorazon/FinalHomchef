@@ -12,11 +12,6 @@ use App\Entity\Membre;
 use App\Form\MembreType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface as Encoder;
 
-/**
- * @IsGranted("ROLE_CHEF")
- *
- */
-
 class CompteController extends AbstractController
 {
     /**

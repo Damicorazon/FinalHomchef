@@ -42,5 +42,5 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_CHEF, ROLE_CLIENT
-        ROLE_CHEF: ROLE_CHEF, ROLE_USER
+        ROLE_CHEF: ROLE_CHEF, ROLE_CLIENT
         ROLE_CLIENT: ROLE_CLIENT

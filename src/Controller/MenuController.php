@@ -23,10 +23,16 @@ class MenuController extends AbstractController
     /**
      * @Route("/menu", name="menu")
      */
-    public function index(): Response
+    public function index(MenuRepository $menuR): Response
     {
-        $this->getUser();
+        
+        $membre = $this->getUser();
+        // dd($membre);
+        $nb_menus = $menuR->findAll($membre->getMenus());
+        // dd($nb_menus);
+
         return $this->render('menu/index.html.twig', [
+            'nombre_menu' => $nb_menus
         ]);
     }
 
