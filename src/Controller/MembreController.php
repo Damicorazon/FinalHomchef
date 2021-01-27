@@ -81,26 +81,33 @@ class MembreController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/modifier", name="membre_modifier", methods={"GET","POST"})
+     * @Route("/menu/modifier/{id}", name="membre_modifier")
+     *
      */
-    public function edit(Request $request, Encoder $encoder, Membre $membre): Response
-    {
+    public function modifier(EntityManagerInterface $em, Request $request, MembreRepository $membreR,Encoder $encoder, $id) {
+        $membre = $membreR->find($id);
         $formMembre = $this->createForm(MembreType::class, $membre);
         $formMembre->handleRequest($request);
-
-        if ($formMembre->isSubmitted() && $formMembre->isValid()) {
+        if( $formMembre->isSubmitted() && $formMembre->isValid() ){
             $mdp = $formMembre->get("password")->getData();
             if( trim($mdp) ) {
             $mdp = $encoder->encodePassword($membre, $mdp);
             $membre->setPassword($mdp);
             }
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('membre');
+            if( $fichier = $formMembre->get("photo")->getData() ){
+                $destination = $this->getParameter("dossier_images");
+                $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
+                $nouveauNom = str_replace(" ", "_", $nomFichier);
+                $nouveauNom .= "_" . uniqid() . "." . $fichier->guessExtension();
+                $fichier->move($destination, $nouveauNom);
+                $membre->setPhoto($nouveauNom);
+            }
+            $em->persist($membre);
+            $em->flush();
+            $this->addFlash("success", "Le membre a bien été modifié");
+            return $this->redirectToRoute("membre");
         }
-        return $this->render('membre/ajouter.html.twig', [
-            'membre' => $membre,
-            'formMembre' => $formMembre->createView(),
-        ]);
+        return $this->render("membre/ajouter.html.twig", ["formMembre" => $formMembre->createView()]);
     }
 }
