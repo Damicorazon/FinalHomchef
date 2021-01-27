@@ -108,6 +108,11 @@ class Membre implements UserInterface
      */
     private $zone;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo;
+
     public function __construct()
     {
         $this->menus = new ArrayCollection();
@@ -392,6 +397,18 @@ class Membre implements UserInterface
     public function setZone(?string $zone): self
     {
         $this->zone = $zone;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }
