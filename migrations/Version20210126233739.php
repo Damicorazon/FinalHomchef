@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210126162430 extends AbstractMigration
+final class Version20210126233739 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -21,7 +21,7 @@ final class Version20210126162430 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE commande (id INT AUTO_INCREMENT NOT NULL, membre_id INT NOT NULL, menu_id INT NOT NULL, date_commande DATE NOT NULL, INDEX IDX_6EEAA67D6A99F74A (membre_id), INDEX IDX_6EEAA67DCCD7E912 (menu_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE membre (id INT AUTO_INCREMENT NOT NULL, pseudo VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, nom VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, mail VARCHAR(255) NOT NULL, ville VARCHAR(100) NOT NULL, cp VARCHAR(5) NOT NULL, adresse VARCHAR(255) NOT NULL, telephone VARCHAR(10) NOT NULL, siret VARCHAR(14) DEFAULT NULL, tva VARCHAR(13) DEFAULT NULL, descriptif LONGTEXT DEFAULT NULL, langue VARCHAR(100) DEFAULT NULL, zone VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_F6B4FB2986CC499D (pseudo), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE membre (id INT AUTO_INCREMENT NOT NULL, pseudo VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, nom VARCHAR(50) DEFAULT NULL, prenom VARCHAR(50) DEFAULT NULL, mail VARCHAR(255) NOT NULL, ville VARCHAR(100) DEFAULT NULL, cp VARCHAR(5) DEFAULT NULL, adresse VARCHAR(255) DEFAULT NULL, telephone VARCHAR(10) DEFAULT NULL, siret VARCHAR(14) DEFAULT NULL, tva VARCHAR(13) DEFAULT NULL, descriptif LONGTEXT DEFAULT NULL, langue VARCHAR(100) DEFAULT NULL, zone VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_F6B4FB2986CC499D (pseudo), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE menu (id INT AUTO_INCREMENT NOT NULL, membre_id INT NOT NULL, nom VARCHAR(50) NOT NULL, specialite VARCHAR(30) NOT NULL, entree VARCHAR(30) DEFAULT NULL, plat VARCHAR(30) NOT NULL, dessert VARCHAR(30) DEFAULT NULL, prix VARCHAR(10) NOT NULL, photo VARCHAR(255) NOT NULL, INDEX IDX_7D053A936A99F74A (membre_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE commande ADD CONSTRAINT FK_6EEAA67D6A99F74A FOREIGN KEY (membre_id) REFERENCES membre (id)');
         $this->addSql('ALTER TABLE commande ADD CONSTRAINT FK_6EEAA67DCCD7E912 FOREIGN KEY (menu_id) REFERENCES menu (id)');

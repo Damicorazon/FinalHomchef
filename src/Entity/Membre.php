@@ -395,4 +395,5 @@ class Membre implements UserInterface
 
         return $this;
     }
+
 }

@@ -11,7 +11,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\MenuRepository;
 use App\Repository\MembreRepository;
 use App\Form\MenuType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+
+    /**
+     * @IsGranted("ROLE_CHEF")
+     * 
+     */
 class MenuController extends AbstractController
 {
     /**

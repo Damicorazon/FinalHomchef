@@ -19,6 +19,10 @@
             {{ form_row(registrationForm.plainPassword, {
             label: 'Mot de passe'
             }) }}
+            {{ form_row(registrationForm.roles, {
+            label: 'Roles :'
+            }) }}
+            <a href="#">Veuillez prendre connaissance des C.G.V</a>
             {{ form_row(registrationForm.agreeTerms) }}
 
             <button type="submit" class="btn">Register</button>
