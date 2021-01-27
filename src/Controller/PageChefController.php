@@ -15,11 +15,10 @@ class PageChefController extends AbstractController
     /**
      * @Route("/chef/{id}", name="page_chef", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function index(MembreRepository $membre): Response
+    public function index(Membre $membre): Response
     {
-        $page_chef = $membre->findAll();
         return $this->render('page_chef/index.html.twig', [
-            'page_chef' => $page_chef,
+            'membre' => $membre,
 
         ]);
     }

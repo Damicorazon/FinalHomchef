@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon compte{% endblock %}
+
+{% block body %}
+	<body class="bodyAjouterMenu">
+		<div class="container">
+			<h1>Modifier mes informations</h1>
+
+
+			{{ form_start(formMembre) }}
+
+			{{ form_widget(formMembre) }}
+
+			{{ form_end(formMembre) }}
+
+    <div>
+      <a href="{{path("compte", {"id": app.user.id})}}" class="btn btn-outline-info mb-5 mt-5">Revenir à mes informations</a>
+    </div>
+
+		</div>
+	</body>
+{% endblock %}

@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
     /**
      * @IsGranted("ROLE_CHEF")
-     * 
+     *
      */
 class MenuController extends AbstractController
 {
@@ -26,7 +26,8 @@ class MenuController extends AbstractController
     public function index(): Response
     {
         $this->getUser();
-        return $this->render('menu/index.html.twig');
+        return $this->render('menu/index.html.twig', [
+        ]);
     }
 
     /**
