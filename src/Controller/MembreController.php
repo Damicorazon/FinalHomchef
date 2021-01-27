@@ -110,4 +110,20 @@ class MembreController extends AbstractController
         }
         return $this->render("membre/ajouter.html.twig", ["formMembre" => $formMembre->createView()]);
     }
+
+    /**
+     * @Route("/membre/supprimer/{id}", name="membre_supprimer")
+     * 
+     */
+    public function supprimer(EntityManagerInterface $em, Request $request, MembreRepository $membreR, $id) {
+
+        $membreASupprimer = $membreR->find($id);
+        if($request->isMethod("POST") ){
+            $em->remove($membreASupprimer);
+            $em->flush();
+            $this->addFlash("success", "Le membre a bien été supprimé");
+            return $this->redirectToRoute('membre');
+        }
+        return $this->render("membre/supprimer.html.twig", ["membre" => $membreASupprimer]);
+    }
 }
