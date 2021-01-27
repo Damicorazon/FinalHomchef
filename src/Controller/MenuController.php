@@ -27,10 +27,7 @@ class MenuController extends AbstractController
     {
         
         $membre = $this->getUser();
-        // dd($membre);
         $nb_menus = $menuR->findAll($membre->getMenus());
-        // dd($nb_menus);
-
         return $this->render('menu/index.html.twig', [
             'nombre_menu' => $nb_menus
         ]);

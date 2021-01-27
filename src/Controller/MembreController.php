@@ -25,7 +25,6 @@ class MembreController extends AbstractController
      */
     public function index(MembreRepository $membreR): Response
     {
-
         $liste_membres = $membreR->findAll();
         return $this->render('membre/index.html.twig', [
             'membres' => $liste_membres,
@@ -55,29 +54,28 @@ class MembreController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/membre/ajouter", name="membre_ajouter", methods={"GET","POST"})
+        /**
+     * @Route("/membre/ajouter", name="membre_ajouter")
      */
-    public function new(Request $request, Encoder $encoder): Response
-    {
-        $membres = new Membre();
-        $formMembre = $this->createForm(MembreType::class, $membres);
+    public function nouveau(Request $request, EntityManagerInterface $em){
+        $membre = new Membre;
+        $formMembre = $this->createForm(MembreType::class, $membre);
         $formMembre->handleRequest($request);
-
-        if ($formMembre->isSubmitted() && $formMembre->isValid()) {
-            //la ligne qui suit correspond aux 3 lignes dans la derniere route "nouveau" 
-            $membres->setPassword($encoder->encodePassword($membres, $membres->getPassword() ) );
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($membres);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('membre');
+        if( $formMembre->isSubmitted() && $formMembre->isValid() ){
+            if( $fichier = $formMembre->get("photo")->getData() ){
+                $destination = $this->getParameter("dossier_images");
+                $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
+                $nouveauNom = str_replace(" ", "_", $nomFichier);
+                $nouveauNom .= "_" . uniqid() . "." . $fichier->guessExtension();
+                $fichier->move($destination, $nouveauNom);
+                $membre->setPhoto($nouveauNom);
+            }
+            $em->persist($membre);
+            $em->flush();
+            $this->addFlash("success", "Le nouveau membre a bien été ajouté");
+            return $this->redirectToRoute("membre");
         }
-
-        return $this->render('membre/ajouter.html.twig', [
-            'membre' => $membres,
-            'formMembre' => $formMembre->createView(),
-        ]);
+        return $this->render("membre/ajouter.html.twig", ["formMembre" => $formMembre->createView()]);
     }
 
     /**
