@@ -72,7 +72,7 @@
 							</li>
 								{# {% for chef in membre %} #}
 								<li>
-								<a href="{{path("compte", {"id": app.user.id})}}">MON COMPTE</a>
+								<a href="#">MON COMPTE</a>
 							</li>
 							{# {% endfor %} #}
 						{% endif %}
@@ -93,7 +93,7 @@
 								<a href="{{ path("menu") }}">MES MENUS</a>
 							</li>
 						<li>
-							<a href="#">MON COMPTE</a>
+							<a href="{{path("compte", {"id": app.user.id})}}">MON COMPTE</a>
 						</li>
 					{% endif %}
 
