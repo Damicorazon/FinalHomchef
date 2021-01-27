@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Membres{% endblock %}
+
+{% block body %}
+
+<body id="bodyMenu">
+
+<h1>Gestion des menus</h1>
+
+<div class="container">
+
+<ul class="col-4 row justify-content-start nav nav-tabs">
+
+	<li>
+		<a href="{{ path("membre_identite") }}" class="nav-link active"><strong>Identité Membre</strong></a>
+	</li>
+	<li>
+		<a href="{{ path("membre_adresse") }}" class="nav-link"><strong>Adresse Membre</strong></a>
+	</li>
+</ul>
+
+<table class="table table-bordered table-striped tableMenu">
+
+        <thead class="thead-dark theadMenu">
+            <tr>
+                <th class="contourMenu">ID</th>
+                <th class="contourMenu">Pseudo</th>
+                <th class="contourMenu">Ville</th>
+                <th class="contourMenu">Code Postal</th>
+                <th class="contourMenu">Adresse</th>
+                <th class="contourMenu">Telephone</th>
+                <th class="contourMenu">Descriptif</th>
+                <th class="contourMenu">Langue</th>
+                <th class="contourMenu">Zone</th>
+                <th class="contourMenu">SIRET</th>
+                <th class="contourMenu">TVA</th>
+                <th class="contourMenu">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for membre in membres %}
+            <tr class="contourMenuG">
+                <td>{{ membre.id }}</td>
+                <td>{{ membre.pseudo }}</td>
+                <td>{{ membre.ville }}</td>
+                <td>{{ membre.cp }}</td>
+                <td>{{ membre.adresse }}</td>
+                <td>{{ membre.telephone }}</td>
+                <td>{{ membre.descriptif }}</td>
+                <td>{{ membre.langue }}</td>
+                <td>{{ membre.zone }}</td>
+                <td>{{ membre.siret }}</td>
+                <td>{{ membre.tva }}</td>
+                <td>
+                    <a href="{{ path("membre_modifier", {"id": membre.id }) }}"class="btn btn-outline-info">Modifier</a>
+                    {# <a href=" {{ path("livre_supprimer", {"id": menu.id }) }}">
+                        <i class="fa fa-trash"></i>
+                    </a> #}
+                    {# <a href=" {{ path("menu_fiche", {"id": menu.id }) }}"class="btn btn-outline-info">Détails</a> #}
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</body>
+</div>
+{% endblock %}

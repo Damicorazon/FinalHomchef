@@ -6,13 +6,19 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.scss';
 import './app.js';
 
 // start the Stimulus application
-import './bootstrap';
 
+// import './bootstrap';
 
+// start the Stimulus application
+
+const $ = require('jquery');  // il faut que jquery soit appelé avant bootstrap
+require('bootstrap');
+
+window.addEventListener("load", function(){
 //PAGE D'ACCUEIL :
 
 // MENU BURGER :
@@ -27,11 +33,11 @@ burger.addEventListener('click', apparitionMenu);
 function apparitionMenu() {
 	console.log('La fonction se declenche !');
 	console.log(menu.style.display);
- 	
+
 if (menu.style.display === 'block') {
-	
+
 menu.style.display = 'none';
-	
+
 burger.src = 'img/burger.png';
  	} else {
  		menu.style.display = 'block';
@@ -205,75 +211,76 @@ function connec(){
 
 // FORMULAIRE DE CONTACT :
 
-    function validateForm()                                    
-{ 
+    function validateForm()
+{
     var name = document.forms["myForm"]["name"];
-    var firstName = document.forms["myForm"]["firstName"];               
+    var firstName = document.forms["myForm"]["firstName"];
     var email = document.forms["myForm"]["email"];
-    var phoneNumber = document.forms["myForm"]["phoneNumber"]; 
-    var message = document.forms["myForm"]["message"];   
-   
-    if (name.value == "")                                  
-    { 
-        document.getElementById('errorname').innerHTML="Veuillez entrez un nom valide";  
-        name.focus(); 
-        return false; 
-    }else{
-        document.getElementById('errorname').innerHTML="";  
-    }
+    var phoneNumber = document.forms["myForm"]["phoneNumber"];
+    var message = document.forms["myForm"]["message"];
 
-     if (firstName.value == "")                                  
-    { 
-        document.getElementById('errorfirstName').innerHTML="Veuillez entrez un prénom valide";  
-        firstName.focus(); 
-        return false; 
-    }else{
-        document.getElementById('errorfirstName').innerHTML="";  
-    }
-       
-    if (email.value == "")                                   
-    { 
-        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide"; 
-        email.focus(); 
-        return false; 
-    }else{
-        document.getElementById('erroremail').innerHTML="";  
-    }
-
-     if (phoneNumber.value == "")                                  
-    { 
-        document.getElementById('errorphoneNumber').innerHTML="Veuillez entrez un numéro de téléphone valide";  
-        phoneNumber.focus(); 
-        return false; 
-    }else{
-        document.getElementById('errorphoneNumber').innerHTML="";  
-    }
-   
-    if (email.value.indexOf("@", 0) < 0)                 
-    { 
-        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide"; 
-        email.focus(); 
-        return false; 
-    } 
-   
-    if (email.value.indexOf(".", 0) < 0)                 
-    { 
-        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide"; 
-        email.focus(); 
-        return false; 
-    } 
-   
-    if (message.value == "")                           
+    if (name.value == "")
     {
-        document.getElementById('errormsg').innerHTML="Veuillez entrez un message valide"; 
-        message.focus(); 
-        return false; 
+        document.getElementById('errorname').innerHTML="Veuillez entrez un nom valide";
+        name.focus();
+        return false;
     }else{
-        document.getElementById('errormsg').innerHTML="";  
+        document.getElementById('errorname').innerHTML="";
     }
-   
-    return true; 
+
+     if (firstName.value == "")
+    {
+        document.getElementById('errorfirstName').innerHTML="Veuillez entrez un prénom valide";
+        firstName.focus();
+        return false;
+    }else{
+        document.getElementById('errorfirstName').innerHTML="";
+    }
+
+    if (email.value == "")
+    {
+        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide";
+        email.focus();
+        return false;
+    }else{
+        document.getElementById('erroremail').innerHTML="";
+    }
+
+     if (phoneNumber.value == "")
+    {
+        document.getElementById('errorphoneNumber').innerHTML="Veuillez entrez un numéro de téléphone valide";
+        phoneNumber.focus();
+        return false;
+    }else{
+        document.getElementById('errorphoneNumber').innerHTML="";
+    }
+
+    if (email.value.indexOf("@", 0) < 0)
+    {
+        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide";
+        email.focus();
+        return false;
+    }
+
+    if (email.value.indexOf(".", 0) < 0)
+    {
+        document.getElementById('erroremail').innerHTML="Veuillez entrez une adresse mail valide";
+        email.focus();
+        return false;
+    }
+
+    if (message.value == "")
+    {
+        document.getElementById('errormsg').innerHTML="Veuillez entrez un message valide";
+        message.focus();
+        return false;
+    }else{
+        document.getElementById('errormsg').innerHTML="";
+    }
+
+    return true;
 }
 
 /**************************** COOKIES ******************************/
 
+});

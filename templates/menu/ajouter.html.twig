@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Menu{% endblock %}
+
+{% block body %}
+<body class="bodyAjouterMenu">
+<div class="container">
+  <h1>Ajouter un menu</h1>
+
+<ul class="col-4 row justify-content-start nav nav-tabs">
+
+	<li>
+		<a href="{{ path("menu") }}" class="nav-link">
+			<strong>Liste des menus</strong>
+		</a>
+	</li>
+	<li>
+<a href="{{ path("menu_ajouter") }}" class="nav-link active">
+
+			<strong>Ajouter un menu</strong>
+		</a>
+	</li>
+</ul>
+
+{{ form_start(formMenu) }}
+
+      {{ form_widget(formMenu) }}
+
+{{ form_end(formMenu) }}
+</div>
+</body>
+{% endblock %}
+
+
+
+

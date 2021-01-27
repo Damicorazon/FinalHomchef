@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Menus{% endblock %}
+
+{% block body %}
+
+<body id="bodyMenu">
+
+<h1>Gestion des menus</h1>
+
+<div class="container">
+
+<ul class="col-4 row justify-content-start nav nav-tabs">
+
+	<li>
+		<a href="{{ path("menu") }}" class="nav-link active"><strong>Liste des menus</strong></a>
+	</li>
+	<li>
+		<a href="{{ path("menu_ajouter") }}" class="nav-link"><strong>Ajouter un menu</strong></a>
+	</li>
+</ul>
+
+<table class="table table-bordered table-striped tableMenu">
+
+        <thead class="thead-dark theadMenu">
+            <tr>
+                <th class="contourMenu">ID</th>
+                <th class="contourMenu">Nom</th>
+                <th class="contourMenu">Spécialités</th>
+                <th class="contourMenu">Entrée</th>
+                <th class="contourMenu">Plat</th>
+                <th class="contourMenu">Dessert</th>
+                <th class="contourMenu">Prix</th>
+                <th class="contourMenu">Photo</th>
+                <th class="contourMenu">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for menu in menus %}
+            <tr class="contourMenuG">
+                <td>{{ menu.id }}</td>
+                <td>{{ menu.nom }}</td>
+                <td>{{ menu.specialite }}</td>
+                <td>{{ menu.entree }}</td>
+                <td>{{ menu.plat }}</td>
+                <td>{{ menu.dessert }}</td>
+                <td>{{ menu.prix }}</td>
+                <td>
+                    <img class="BoardPhoto" src="{{ asset("img/" ~ menu.photo) }}" alt="pas de photo">
+                </td>
+                <td>
+                    <a href="{{ path("menu_modifier", {"id": menu.id }) }}"class="btn btn-outline-info">Modifier</a>
+                    {# <a href=" {{ path("livre_supprimer", {"id": menu.id }) }}">
+                        <i class="fa fa-trash"></i>
+                    </a> #}
+                    <a href=" {{ path("menu_fiche", {"id": menu.id }) }}"class="btn btn-outline-info">Détails</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</body>
+</div>
+{% endblock %}

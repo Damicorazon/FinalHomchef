@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche Membre{% endblock %}
+
+{% block body %}
+<div class="container ficheMenu">
+<h1>Détails du menu {{ menu.nom }}</h1>
+
+<ul class="list-group list-group-flush">
+
+    <li class="list-group-item">
+        <strong>Identifiant :</strong> {{ menu.id}}
+    </li>
+    <li class="list-group-item">
+        <strong>Nom :</strong> {{ menu.nom }}
+    </li>
+    <li class="list-group-item">
+        <strong>Spécialités :</strong> {{ menu.specialite}}
+    </li>
+    <li class="list-group-item">
+        <strong>Entrée :</strong> {{ menu.entree}}
+    </li>
+    <li class="list-group-item">
+        <strong>Plat :</strong> {{ menu.plat}}
+    </li>
+    <li class="list-group-item">
+        <strong>Dessert :</strong> {{ menu.dessert}}
+    </li>
+    <li class="list-group-item">
+        <strong>Prix :</strong> {{ menu.prix}} €
+    </li>
+    <li class="list-group-item">
+        <strong>Photo</strong>
+        <img src="{{ asset("img/" ~ menu.photo) }}" class="tailleImage" alt="pas de photo">
+    </li>
+    </ul>
+
+  </table>
+    <div>
+    <a href="{{ path('menu') }}" class="btn btn-outline-info mb-5 mt-5">Retour à la liste des Menus</a>
+    </div>
+
+</div>
+{% endblock %}

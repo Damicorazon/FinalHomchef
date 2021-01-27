@@ -1,3 +1,9 @@
+
+$primary: #34495E;
+$info: #D1920E;
+
+@import "~bootstrap/scss/bootstrap";
+
 *{
 	margin: 0;
 	padding: 0;
@@ -24,6 +30,8 @@ header{
 #logoHeader{
 	width:9%;
 	padding: 0.6% 0% 0% 9%;
+
+	box-sizing: initial;
 }
 nav{
 	float: right;
@@ -36,7 +44,7 @@ nav ul{
 }
 nav ul li {
   float: right;
-  width: 30%;
+
   text-align: center;
   position: relative;
 }
@@ -345,7 +353,7 @@ body{
 
 footer{
   width: 100%;
-  background-color: rgb(0,0,0, 0.8)
+  background-color: rgba(0,0,0,0.8)
 }
 .h3Foot{
   color: #d1920e;
@@ -1471,7 +1479,7 @@ input::placeholder {
   padding-bottom: 6%;
 }
 #prixInclus i, #garanties i{
-  color:##6AD566;
+  color:#6AD566;
   padding-left: 12%;
 }
 #prixInclus p, #garanties p{
@@ -1500,9 +1508,52 @@ input::placeholder {
 .fondGris{
   background: #F4F0F0;
 }
-#footerReservation{
+
+
+/*******************TABLEAU DE BORD************************/
+
+#bodyMenu {
+	margin-top: 10%;
+}
+.tableMenu{
+	table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.theadMenu:nth-child(1) {
+  width: 30%;
+}
+
+.contourMenuG {
+border-collapse: collapse;
+border: 1px solid black;
+}
+.ficheMenu{
+	margin-top: 10%;
+}
+
+.BoardPhoto{
+	width: 90px;
+}
+
+.tailleImage{
+	width: 150px;
 
 }
+.bodyAjouterMenu{
+	margin-top: 10%;
+}
+
+/*******************TABLEAU DE BORD************************/
+
+#bodyConnexion {
+	margin-top: 10%;
+}
+.inherit{
+	text-align: inherit !important;
+}
+
+
 
 /*******************RESPONSIVE************************/
 
@@ -2116,3 +2167,4 @@ header{
 	padding: 15px;
 }
 }
+
