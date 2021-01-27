@@ -15,18 +15,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
     /**
      * @IsGranted("ROLE_CHEF")
-     * 
+     *
      */
 class MenuController extends AbstractController
 {
     /**
      * @Route("/menu", name="menu")
      */
-    public function index(MenuRepository $menuR): Response
+    public function index(): Response
     {
-        $liste_menus = $menuR->findAll();
+        $this->getUser();
         return $this->render('menu/index.html.twig', [
-            'menus' => $liste_menus,
         ]);
     }
 
@@ -49,7 +48,7 @@ class MenuController extends AbstractController
         $formMenu = $this->createForm(MenuType::class, $menu);
         $formMenu->handleRequest($request);
         if( $formMenu->isSubmitted() && $formMenu->isValid() ){
-            if( $fichier = $formMenu->get("photos")->getData() ){
+            if( $fichier = $formMenu->get("photo")->getData() ){
                 $destination = $this->getParameter("dossier_images");
                 $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
                 $nouveauNom = str_replace(" ", "_", $nomFichier);
@@ -57,7 +56,8 @@ class MenuController extends AbstractController
                 $fichier->move($destination, $nouveauNom);
                 $menu->setPhoto($nouveauNom);
             }
-
+            $membre = $this->getUser();
+            $menu->setMembre($membre);
             $em->persist($menu);
             $em->flush();
             $this->addFlash("success", "Le nouveau menu a bien été ajouté");

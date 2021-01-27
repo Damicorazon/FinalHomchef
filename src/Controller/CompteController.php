@@ -22,9 +22,8 @@ class CompteController extends AbstractController
     /**
      * @Route("/compte", name="compte")
      */
-    public function index(MembreRepository $membre): Response
+    public function index(): Response
     {
-        //$info_membre = $membre->find($id);
         $info_membre = $this->getUser();
         return $this->render('compte/index.html.twig', [
             'membre' => $info_membre,
@@ -33,8 +32,7 @@ class CompteController extends AbstractController
     /**
      * @Route("/compte/description/{id}", name="compte_description")
      */
-    public function description(MembreRepository $membre, $id): Response{
-        $description = $membre->find($id);
+    public function description(): Response{
         $description = $this->getUser();
         return $this->render('compte/description.html.twig', [
             'membre' => $description,

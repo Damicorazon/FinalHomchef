@@ -22,7 +22,7 @@ class MembreType extends AbstractType
                 "choices" => [
                     "Convive" => "ROLE_CLIENT",
                     "Chef" => "ROLE_CHEF",
-                    "Admin" => "ROLE_Admin"
+                    "Admin" => "ROLE_ADMIN"
                 ],
                 "multiple" => false,
                 "expanded" => true
