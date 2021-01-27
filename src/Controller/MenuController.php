@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Menu;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\MenuRepository;
-use App\Repository\MembreRepository;
 use App\Form\MenuType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 

@@ -24,6 +24,34 @@
 			</a>
 			<nav>
 				<ul>
+				{% if is_granted("IS_AUTHENTICATED_FULLY") %}
+						<li>
+							<a href="{{ path("app_logout") }}" id="#">DECONNEXION</a>
+						</li>
+						<li>
+							<a href="#">Bonjour {{ app.user.username }}</a>
+						</li>
+
+					{% else %}
+						<li>
+							<a href="{{ path("app_login") }}" id="connection">CONNEXION</a>
+						</li>
+						<li class="deroulant">
+							<a href="#">ASSISTANCE</a>
+							<ul class="sous">
+								<li>
+									<a href="#">FAQ</a>
+								</li>
+								<li>
+									<a href="#preFooter">Téléphone</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#lesSpecialites">SPECIALITES</a>
+						</li>
+					{% endif %}
+
 					{% if is_granted("ROLE_MEMBRE") %}
 						<li>
 							<a href="#lesSpecialites">SPECIALITES</a>
@@ -64,33 +92,13 @@
 						</li>
 					{% endif %}
 
-					{% if is_granted("IS_AUTHENTICATED_FULLY") %}
-						<li>
-							<a href="{{ path("app_logout") }}" id="#">DECONNEXION</a>
-						</li>
-						<li>
-							<a href="#">Bonjour {{ app.user.username }}</a>
-						</li>
-
-					{% else %}
-						<li>
-							<a href="{{ path("app_login") }}" id="connection">CONNEXION</a>
-						</li>
-						<li class="deroulant">
-							<a href="#">ASSISTANCE</a>
-							<ul class="sous">
-								<li>
-									<a href="#">FAQ</a>
-								</li>
-								<li>
-									<a href="#preFooter">Téléphone</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#lesSpecialites">SPECIALITES</a>
-						</li>
+					{% if is_granted("ROLE_ADMIN") %}
+							<li>
+								<a href="{{ path("membre") }}">GESTION MEMBRE</a>
+							</li>
 					{% endif %}
+
+					
 				</ul>
 			</nav>
 			<img src="photos/header/burger.png" id="burger" class="mobile" alt="Icone avec trois traits blanc horizontaux">
