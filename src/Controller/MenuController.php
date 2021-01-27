@@ -49,7 +49,7 @@ class MenuController extends AbstractController
         $formMenu = $this->createForm(MenuType::class, $menu);
         $formMenu->handleRequest($request);
         if( $formMenu->isSubmitted() && $formMenu->isValid() ){
-            if( $fichier = $formMenu->get("photos")->getData() ){
+            if( $fichier = $formMenu->get("photo")->getData() ){
                 $destination = $this->getParameter("dossier_images");
                 $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
                 $nouveauNom = str_replace(" ", "_", $nomFichier);
