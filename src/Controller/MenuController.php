@@ -99,4 +99,20 @@ class MenuController extends AbstractController
         }
         return $this->render("menu/ajouter.html.twig", ["formMenu" => $formMenu->createView()]);
     }
+
+    /**
+     * @Route("/menu/supprimer/{id}", name="menu_supprimer")
+     * 
+     */
+    public function supprimer(EntityManagerInterface $em, Request $request, MenuRepository $menuR, $id) {
+
+        $menuASupprimer = $menuR->find($id);
+        if($request->isMethod("POST") ){
+            $em->remove($menuASupprimer);
+            $em->flush();
+            $this->addFlash("success", "Le menu a bien été supprimé");
+            return $this->redirectToRoute('menu');
+        }
+        return $this->render("menu/supprimer.html.twig", ["menu" => $menuASupprimer]);
+    }
 }
