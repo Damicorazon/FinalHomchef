@@ -59,10 +59,12 @@
 							<li>
 								<a href="{{ path("menu") }}">MES MENUS</a>
 							</li>
-						<li>
-							<a href="#">MON COMPTE</a>
-						</li>
-					{% endif %}
+								{# {% for chef in membre %} #}
+								<li>
+								<a href="{{path("compte", {"id": app.user.id})}}">MON COMPTE</a>
+							</li>
+							{# {% endfor %} #}
+						{% endif %}
 
 					{% if is_granted("IS_AUTHENTICATED_FULLY") %}
 						<li>

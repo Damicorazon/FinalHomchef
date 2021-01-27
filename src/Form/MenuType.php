@@ -27,8 +27,11 @@ class MenuType extends AbstractType
                     new NotBlank([ "message" => "Le nom ne peut pas être vide" ])
                 ]
              ])
-            ->add('specialite')
+            ->add('specialite', TextType::class, [
+                "label" => "Specialité"
+            ])
             ->add('entree', TextType::class, [
+                "label" => "Entrée",
                 "required" => false
             ])
             ->add('plat')
