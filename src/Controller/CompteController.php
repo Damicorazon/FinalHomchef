@@ -26,15 +26,15 @@ class CompteController extends AbstractController
             'membre' => $info_membre,
         ]);
     }
-    // /**
-    //  * @Route("/compte/description/{id}", name="compte")
-    //  */
-    // public function description(MembreRepository $membre, $id): Response{
-    //     $description = $membre->find($id);
-    //     $description = $this->getUser();
-    //     return $this->render('compte/description.html.twig', [
-    //         'description' => $description,
-    //     ]);
-    // }
+    /**
+     * @Route("/compte/description/{id}", name="compte_description")
+     */
+    public function description(MembreRepository $membre, $id): Response{
+        $description = $membre->find($id);
+        $description = $this->getUser();
+        return $this->render('compte/description.html.twig', [
+            'membre' => $description,
+        ]);
+    }
 
 }

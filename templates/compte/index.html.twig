@@ -9,53 +9,53 @@
 
 		<ul class="col-4 row justify-content-start nav nav-tabs">
 		<li>
-			<a href="#" class="nav-link active"><strong>Mes informations</strong>
+			<a href="{{ path("compte", {"id": membre.id }) }}" class="nav-link active"><strong>Mes informations</strong>
 			</a>
 		</li>
 		<li>
-			<a href="#" class="nav-link"><strong>Ma description</strong></a>
+			<a href="{{ path("compte_description", {"id": membre.id }) }}" class="nav-link"><strong>Ma description</strong></a>
 		</li>
 		</ul>
 
 		<ul class="list-group list-group-flush">
 		<li class="list-group-item">
-				<strong>Votre pseudo :</strong>
+				<strong>Pseudo :</strong>
 				{{ membre.pseudo}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre nom :</strong>
+				<strong>Nom :</strong>
 				{{ membre.nom}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre prénom :</strong>
+				<strong>Prénom :</strong>
 				{{ membre.prenom }}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre adresse email :</strong>
+				<strong>Adresse email :</strong>
 				{{ membre.mail}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre adresse :</strong>
+				<strong>Adresse postale :</strong>
 				{{ membre.adresse}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre code postal :</strong>
+				<strong>Code postal :</strong>
 				{{ membre.cp}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre ville :</strong>
+				<strong>Ville :</strong>
 				{{ membre.ville}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre numéro de téléphone :</strong>
+				<strong>Numéro de téléphone :</strong>
 				{{ membre.telephone}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre numéro de Siret :</strong>
+				<strong>Numéro de Siret :</strong>
 				{{ membre.siret}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre numéro de TVA :</strong>
+				<strong>Numéro de TVA :</strong>
 				{{ membre.tva}}
 			</li>
 		</ul>

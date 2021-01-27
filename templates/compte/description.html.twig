@@ -6,67 +6,42 @@
 {% block body %}
 	<div class="container ficheMenu">
 
-		<h1>Bonjour
-			{{ membre.prenom }}</h1>
+		<h1>Bonjour {{ membre.prenom }}</h1>
 
 		<ul class="col-4 row justify-content-start nav nav-tabs">
 			<li>
-				<a href="#" class="nav-link active">
+				<a href="{{ path("compte", {"id": membre.id }) }}" class="nav-link">
 					<strong>Mes informations</strong>
 				</a>
 			</li>
 			<li>
-				<a href="#" class="nav-link">
+				<a href="{{ path("compte_description", {"id": membre.id }) }}" class="nav-link active">
 					<strong>Ma description</strong>
 				</a>
 			</li>
 		</ul>
 
 		<ul class="list-group list-group-flush">
-			<li class="list-group-item">
-				<strong>Votre pseudo :</strong>
-				{{ membre.pseudo}}
+		<li class="list-group-item">
+				<strong>Votre photo :</strong>
+				{{ membre.photo}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre nom :</strong>
-				{{ membre.nom}}
+				<strong>Votre description :</strong>
+				{{ membre.descriptif}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre prénom :</strong>
-				{{ membre.prenom }}
+				<strong>Les langues que vous parlez :</strong>
+				{{ membre.langue}}
 			</li>
 			<li class="list-group-item">
-				<strong>Votre adresse email :</strong>
-				{{ membre.mail}}
-			</li>
-			<li class="list-group-item">
-				<strong>Votre adresse :</strong>
-				{{ membre.adresse}}
-			</li>
-			<li class="list-group-item">
-				<strong>Votre code postal :</strong>
-				{{ membre.cp}}
-			</li>
-			<li class="list-group-item">
-				<strong>Votre ville :</strong>
-				{{ membre.ville}}
-			</li>
-			<li class="list-group-item">
-				<strong>Votre numéro de téléphone :</strong>
-				{{ membre.telephone}}
-			</li>
-			<li class="list-group-item">
-				<strong>Votre numéro de Siret :</strong>
-				{{ membre.siret}}
-			</li>
-			<li class="list-group-item">
-				<strong>Votre numéro de TVA :</strong>
-				{{ membre.tva}}
+				<strong>Votre zone de déplacement :</strong>
+				{{ membre.zone }}
 			</li>
 		</ul>
 	</table>
 	<div>
-		<a href="#" class="btn btn-outline-info mb-5 mt-5">Modifier mes informations</a>
+		<a href="#" class="btn btn-outline-info mb-5 mt-5">Modifier ma description</a>
 	</div>
 </div>{% endblock %}
 
