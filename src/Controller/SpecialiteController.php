@@ -16,7 +16,7 @@ class SpecialiteController extends AbstractController
     {
         $liste_menu = $menu->findAll();
         return $this->render('specialite/index.html.twig', [
-            'menus' => $menu,
+            'menus' => $liste_menu,
         ]);
     }
 

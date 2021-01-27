@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Menu;
+use App\Entity\Membre;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\MenuRepository;
 use App\Form\MenuType;
@@ -22,12 +23,10 @@ class MenuController extends AbstractController
     /**
      * @Route("/menu", name="menu")
      */
-    public function index(MenuRepository $menuR): Response
+    public function index(): Response
     {
-        $liste_menus = $menuR->findAll();
-        return $this->render('menu/index.html.twig', [
-            'menus' => $liste_menus,
-        ]);
+        $this->getUser();
+        return $this->render('menu/index.html.twig');
     }
 
     /**
@@ -57,7 +56,8 @@ class MenuController extends AbstractController
                 $fichier->move($destination, $nouveauNom);
                 $menu->setPhoto($nouveauNom);
             }
-
+            $membre = $this->getUser();
+            $menu->setMembre($membre);
             $em->persist($menu);
             $em->flush();
             $this->addFlash("success", "Le nouveau menu a bien été ajouté");

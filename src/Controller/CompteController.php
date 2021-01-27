@@ -16,11 +16,10 @@ use App\Repository\MembreRepository;
 class CompteController extends AbstractController
 {
     /**
-     * @Route("/compte/fiche/{id}", name="compte")
+     * @Route("/compte", name="compte")
      */
-    public function index(MembreRepository $membre, $id): Response
+    public function index(): Response
     {
-        $info_membre = $membre->find($id);
         $info_membre = $this->getUser();
         return $this->render('compte/index.html.twig', [
             'membre' => $info_membre,
