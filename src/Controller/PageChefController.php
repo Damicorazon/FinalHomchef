@@ -17,7 +17,6 @@ class PageChefController extends AbstractController
      */
     public function index(Membre $membre): Response
     {
-<<<<<<< HEAD
         $menus = $membre->getMenus();
         //dd($menus);
         $specialites = [];
@@ -29,12 +28,6 @@ class PageChefController extends AbstractController
         return $this->render('page_chef/index.html.twig', [
             'membre' => $membre,
             'specialites' => $specialites
-=======
-
-        
-        return $this->render('page_chef/index.html.twig', [
-            'membre' => $membre,
->>>>>>> damdam
         ]);
     }
 }
