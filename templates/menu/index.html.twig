@@ -12,14 +12,14 @@
 
 {% set comptage = [] %}
 
-{% for menu in nombre_menu %}        
+{% for menu in nombre_menu %}
     {% if app.user.id == menu.membre.id %}
         {% set comptage = comptage|merge([menu]) %}
     {% endif %}
 {% endfor %}
     {# {{ dump(comptage) }} #}
 
-<th>Bravo! Vous avez actuellement {{ comptage|length }} menus à offrir!</th>
+<p class="alert alert-info">Bravo ! Vous avez actuellement {{ comptage|length }} menus à offrir !</p>
 
 
 <ul class="col-4 row justify-content-start nav nav-tabs">
