@@ -9,9 +9,9 @@
 <h1>Gestion des menus</h1>
 
 <div class="container">
-<th>Il y a actuellement {{ membres|length }} membres inscrit sur le site.</th>
+<p class="alert alert-info">Il y a actuellement {{ membres|length }} membres inscrit sur le site.</p>
 
-<ul class="col-4 row justify-content-start nav nav-tabs">
+<ul class="col-6 row justify-content-start nav nav-tabs">
 
 	<li>
 		<a href="{{ path("membre_identite") }}" class="nav-link"><strong>Identité Membre</strong></a>
@@ -39,7 +39,7 @@
                 <th>Zone</th>
                 <th>SIRET</th>
                 <th>TVA</th>
-                <th>Action</th>
+                <th class="tailleColonneAction">Action</th>
             </tr>
         </thead>
 
