@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Membre;
 use App\Form\MembreType;
+use App\Form\ModifMembreType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface as Encoder;
 
 
@@ -57,7 +58,7 @@ class MembreController extends AbstractController
         /**
      * @Route("/membre/ajouter", name="membre_ajouter")
      */
-    public function nouveau(Request $request, EntityManagerInterface $em){
+    public function nouveau(Request $request, EntityManagerInterface $em, Encoder $encoder){
         $membre = new Membre;
         $formMembre = $this->createForm(MembreType::class, $membre);
         $formMembre->handleRequest($request);
@@ -70,6 +71,8 @@ class MembreController extends AbstractController
                 $fichier->move($destination, $nouveauNom);
                 $membre->setPhoto($nouveauNom);
             }
+            $membre->setPassword($encoder->encodePassword($membre, $membre->getPassword() ) );
+            $entityManager = $this->getDoctrine()->getManager();
             $em->persist($membre);
             $em->flush();
             $this->addFlash("success", "Le nouveau membre a bien été ajouté");
@@ -79,21 +82,14 @@ class MembreController extends AbstractController
     }
 
     /**
-     * @Route("/membre/modifier/{id}", name="membre_modifier")
-     *
+     * @Route("/membre/modifier/{id}", name="membre_modifier", methods={"GET","POST"})
      */
-    public function modifier(EntityManagerInterface $em, Request $request, MembreRepository $membreR,Encoder $encoder, $id) {
-        $membre = $membreR->find($id);
-        $formMembre = $this->createForm(MembreType::class, $membre);
-        $formMembre->handleRequest($request);
-        if( $formMembre->isSubmitted() && $formMembre->isValid() ){
-            $mdp = $formMembre->get("password")->getData();
-            if( trim($mdp) ) {
-            $mdp = $encoder->encodePassword($membre, $mdp);
-            $membre->setPassword($mdp);
-            }
-            $this->getDoctrine()->getManager()->flush();
-            if( $fichier = $formMembre->get("photo")->getData() ){
+    public function edit(Request $request, Encoder $encoder, Membre $membre): Response
+    {
+        $formModifMembre = $this->createForm(ModifMembreType::class, $membre);
+        $formModifMembre->handleRequest($request);
+        if ($formModifMembre->isSubmitted() && $formModifMembre->isValid()) {
+            if( $fichier = $formModifMembre->get("photo")->getData() ){
                 $destination = $this->getParameter("dossier_images");
                 $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
                 $nouveauNom = str_replace(" ", "_", $nomFichier);
@@ -101,12 +97,20 @@ class MembreController extends AbstractController
                 $fichier->move($destination, $nouveauNom);
                 $membre->setPhoto($nouveauNom);
             }
-            $em->persist($membre);
-            $em->flush();
-            $this->addFlash("success", "Le membre a bien été modifié");
-            return $this->redirectToRoute("membre");
+            $mdp = $formModifMembre->get("password")->getData();
+            if( trim($mdp) ) {
+                $mdp = $encoder->encodePassword($membre, $mdp);
+                $membre->setPassword($mdp);
+            }
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('membre');
         }
-        return $this->render("membre/ajouter.html.twig", ["formMembre" => $formMembre->createView()]);
+
+        return $this->render('membre/modifier.html.twig', [
+            'membre' => $membre,
+            'formModifMembre' => $formModifMembre->createView(),
+        ]);
     }
 
     /**

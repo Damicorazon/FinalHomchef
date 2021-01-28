@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=MembreRepository::class)
- * @UniqueEntity(fields={"pseudo"}, message="There is already an account with this pseudo")
+ * @UniqueEntity(fields={"pseudo"}, message="Il y a déjà un compte avec ce pseudo")
  */
 class Membre implements UserInterface
 {
