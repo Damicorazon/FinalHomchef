@@ -34,7 +34,7 @@
 
 					{% else %}
 						<li>
-							<a href="{{ path("app_login") }}" id="connection">CONNEXION</a>
+							 <a href="{{ path("app_login") }}" id="connection">CONNEXION</a>  
 						</li>
 						<li class="deroulant">
 							<a href="#">ASSISTANCE</a>
@@ -101,7 +101,7 @@
 			<div id="formInscr" class="containerConnec">
 				<div id="contactForm" class="flex">
 					<a href="#" onclick="inscrip()" class="bordureCo InscrPage">Inscription</a>
-					<a href="#" onclick="connec()" class="bordureCo InscrPage">Connexion</a>
+					<a href="{{ path("app_login") }}" onclick="connec()" class="bordureCo InscrPage">Connexion</a>
 					<i class="fas fa-times close"></i>
 				</div>
 				<h2>Quel plaisir de vous revoir!</h2>
@@ -126,7 +126,7 @@
 			<div id="formInscr1" class="containerConnec">
 				<div id="contactForm1" class="flex">
 					<a href="#" onclick="inscrip1()" class="bordureCo InscrPage">Inscription</a>
-					<a href="#" onclick="connec()" class="bordureCo InscrPage">Connexion</a>
+					<a href="{{ path("app_login") }}" onclick="connec()" class="bordureCo InscrPage">Connexion</a>
 					<i class="fas fa-times close1"></i>
 				</div>
 				<h2>Inscrivez-vous gratuitement!</h2>

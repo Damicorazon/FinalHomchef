@@ -10,9 +10,16 @@
 
 <div class="container">
 
-<p class="alert alert-info">Il y a actuellement {{ membres|length }} membres inscrit sur le site.</p>
+{# {% set comptage = [] %}
 
-<ul class="col-6 row justify-content-start nav nav-tabs">
+{% for nb_membre in membres %}        
+        {% set comptage = comptage|merge([nb_membre]) %}
+{% endfor %}
+    {{ dump(comptage) }} #}
+
+<th>Il y a actuellement {{ membres|length }} membres inscrit sur le site.</th>
+
+<ul class="col-4 row justify-content-start nav nav-tabs">
 
 	<li>
 		<a href="{{ path("membre_identite") }}" class="nav-link active"><strong>Identité Membre</strong></a>

@@ -9,6 +9,7 @@
 <h1>Gestion des menus</h1>
 
 <div class="container">
+<th>Il y a actuellement {{ membres|length }} membres inscrit sur le site.</th>
 
 <ul class="col-4 row justify-content-start nav nav-tabs">
 
@@ -17,6 +18,9 @@
 	</li>
 	<li>
 		<a href="{{ path("membre_adresse") }}" class="nav-link active"><strong>Adresse Membre</strong></a>
+	</li>
+    <li>
+		<a href="{{ path("membre_ajouter") }}" class="nav-link"><strong>Ajouter un membre</strong></a>
 	</li>
 </ul>
 
@@ -55,12 +59,10 @@
                 <td>{{ membre.siret }}</td>
                 <td>{{ membre.tva }}</td>
                 <td>
-                    {# {<a href="{{ path("membre_modifier", {"id": membre.id }) }}"class="btn btn-outline-info">Modifier</a>
-                    <a href=" {{ path("livre_supprimer", {"id": menu.id }) }}">
-                        <i class="fa fa-trash"></i>
-                    </a>
-                    <a href=" {{ path("menu_fiche", {"id": menu.id }) }}"class="btn btn-outline-info">Détails</a>
-                </td> #}
+                    <a href="{{ path("membre_modifier", {"id": membre.id }) }}"class="btn btn-outline-info">Modifier</a>
+                    <a href=" {{ path("membre_supprimer", {"id": membre.id }) }}"class="btn btn-outline-info">Supprimer</a>
+                    {# <a href=" {{ path("menu_fiche", {"id": menu.id }) }}"class="btn btn-outline-info">Détails</a> #}
+                </td>
             </tr>
         {% endfor %}
 
