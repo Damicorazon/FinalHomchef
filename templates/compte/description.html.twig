@@ -24,7 +24,7 @@
 		<ul class="list-group list-group-flush">
 		<li class="list-group-item">
 				<strong>Votre photo :</strong>
-				{{ membre.photo}}
+				<img src="{{ asset("img/" ~ membre.photo) }}"alt="photo du chef" class="taillePhotoChef">
 			</li>
 			<li class="list-group-item">
 				<strong>Votre description :</strong>
