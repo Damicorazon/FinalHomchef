@@ -9,6 +9,14 @@
 <h1>Gestion des membres</h1>
 
 <div class="container">
+{% set comptage = [] %}
+
+{% for nb_membre in membres %}        
+        {% set comptage = comptage|merge([nb_membre]) %}
+{% endfor %}
+    {# {{ dump(comptage) }} #}
+
+<th>Il y a actuellement {{ comptage|length }} membres inscrit sur le site.</th>
 
 <ul class="col-4 row justify-content-start nav nav-tabs">
 
@@ -17,6 +25,9 @@
 	</li>
 	<li>
 		<a href="{{ path("membre_adresse") }}" class="nav-link"><strong>Adresse Membre</strong></a>
+	</li>
+    <li>
+		<a href="{{ path("membre_ajouter") }}" class="nav-link"><strong>Ajouter un membre</strong></a>
 	</li>
 </ul>
 
@@ -47,10 +58,8 @@
                 <td>{{ membre.prenom }}</td>
                 <td>{{ membre.mail }}</td>
                 <td>
-                    {# <a href="{{ path("menu_modifier", {"id": menu.id }) }}"class="btn btn-outline-info">Modifier</a> #}
-                    {# <a href=" {{ path("livre_supprimer", {"id": menu.id }) }}">
-                        <i class="fa fa-trash"></i>
-                    </a> #}
+                    <a href="{{ path("membre_modifier", {"id": membre.id }) }}"class="btn btn-outline-info">Modifier</a>
+                    <a href=" {{ path("membre_supprimer", {"id": membre.id }) }}"class="btn btn-outline-info">Supprimer</a>
                     {# <a href=" {{ path("menu_fiche", {"id": menu.id }) }}"class="btn btn-outline-info">Détails</a> #}
                 </td>
             </tr>

@@ -13,7 +13,7 @@ use App\Entity\Menu;
 class PageChefController extends AbstractController
 {
     /**
-     * @Route("/chef/{id}", name="page_chef", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/{id}", name="page_chef", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function index(Membre $membre): Response
     {
