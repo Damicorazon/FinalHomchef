@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Membre{% endblock %}
+
+{% block body %}
+
+<table class="tableMenu">
+    <thead class="theadMenu">
+        <th class="contourMenu">
+            <h1>Modification</h1>
+
+            {{ form_start(formModifMembre) }}
+            {{ form_row(formModifMembre.pseudo) }}
+            {{ form_row(formModifMembre.roles) }}
+            {{ form_row(formModifMembre.password) }}
+            {{ form_row(formModifMembre.nom) }}
+            {{ form_row(formModifMembre.prenom) }}
+            {{ form_row(formModifMembre.mail) }}
+            {{ form_row(formModifMembre.ville) }}
+            {{ form_row(formModifMembre.cp) }}
+            {{ form_row(formModifMembre.adresse) }}
+            {{ form_row(formModifMembre.telephone) }}
+            {{ form_row(formModifMembre.siret) }}
+            {{ form_row(formModifMembre.tva) }}
+            {{ form_row(formModifMembre.descriptif) }}
+            {{ form_row(formModifMembre.langue) }}
+            {{ form_row(formModifMembre.zone) }}
+            {{ form_row(formModifMembre.photo) }}
+
+            <button type="submit" class="btn">Modifier</button>
+            {{ form_end(formModifMembre) }}
+        </th>
+    </thead>
+</table>
+{% endblock %}
+
+
+
