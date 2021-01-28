@@ -7,7 +7,7 @@
 
 		<section id="pageReservation">
 
-			<h1>Nom menu</h1>
+			<h1>{{menu.nom}}</h1>
 		</section>
 		<div id="container" class="flex">
 			<div id="contenuReservation">
@@ -17,16 +17,16 @@
 						<p>Le chef vient avec le nécessaire pour la préparation du repas à l’heure convenue.<br>Il prépare le repas dans votre cuisine, sert les convives à table et nettoie la cuisine<br>avant de partir.</p>
 						<hr class="traitReservation"></hr>
 
-				{% for menu in membre.menus %}
+				{# {% for menu in menu %} #}
 					<h2>ENTRÉE</h2>
 						<p>{{menu.entree}}</p>
 					<hr class="traitReservation"></hr>
 					<h2>PLAT</h2>
-						<p>{{menu.plat}}/p>
+						<p>{{menu.plat}}</p>
 					<hr class="traitReservation"></hr>
 					<h2>DESSERT</h2>
 						<p>{{menu.dessert}}</p>
-		{% endfor %}
+		{# {% endfor %} #}
 		<hr class="traitReservation">
 
 	</body>
@@ -143,7 +143,7 @@
 	</div>
 	<div class="lignePanier">
 		<p class="inlineBlock">Prix unitaire</p>
-		<p class="inlineBlock" id="placementPPanier">50 €</p>
+		<p class="inlineBlock" id="placementPPanier">{{ menu.prix }} €</p>
 	</div>
 	<div class="lignePanier">
 		<p class="inlineBlock">Menu x 6</p>

@@ -22,7 +22,7 @@
             {{ form_row(registrationForm.roles, {
             label: 'Roles :'
             }) }}
-            <a href="#">Veuillez prendre connaissance des C.G.U</a>
+            <a href="{{ path("cgv") }}">Veuillez prendre connaissance des C.G.U</a>
             {{ form_row(registrationForm.agreeTerms) }}
 
             <button type="submit" class="btn">Register</button>

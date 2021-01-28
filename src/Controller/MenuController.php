@@ -25,7 +25,7 @@ class MenuController extends AbstractController
      */
     public function index(MenuRepository $menuR): Response
     {
-        
+
         $membre = $this->getUser();
         $nb_menus = $menuR->findAll($membre->getMenus());
         return $this->render('menu/index.html.twig', [
@@ -38,7 +38,8 @@ class MenuController extends AbstractController
      */
     public function fiche(MenuRepository $menu, $id)
     {
-    $menu = $menu->find($id);
+        $menu = $menu->find($id);
+        dd($menu);
         return $this->render('menu/fiche.html.twig', [
             'menu' => $menu,
         ]);
@@ -99,7 +100,7 @@ class MenuController extends AbstractController
 
     /**
      * @Route("/menu/supprimer/{id}", name="menu_supprimer")
-     * 
+     *
      */
     public function supprimer(EntityManagerInterface $em, Request $request, MenuRepository $menuR, $id) {
 
