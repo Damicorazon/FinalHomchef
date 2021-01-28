@@ -17,11 +17,12 @@
         {% set comptage = comptage|merge([menu]) %}
     {% endif %}
 {% endfor %}
-    {# {{ dump(comptage) }} #}
-
+{% if comptage|length == 0 %}
+<p class="alert alert-info">Vous avez actuellement {{ comptage|length }} menus. Offrez nous vos meilleurs mets!</p>
+{% else %}
 <p class="alert alert-info">Bravo ! Vous avez actuellement {{ comptage|length }} menus à offrir !</p>
-
-
+    
+{% endif %}
 <ul class="col-4 row justify-content-start nav nav-tabs">
 
 	<li>

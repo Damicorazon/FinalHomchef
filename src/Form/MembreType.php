@@ -32,7 +32,7 @@ class MembreType extends AbstractType
             ->add('password', PasswordType::class, [
                 "label" => "Mot de passe",
                 "mapped" => false,
-                "required" => false
+                "required" => false,
             ])
             ->add('nom', TextType::class, [
                 "required" => false

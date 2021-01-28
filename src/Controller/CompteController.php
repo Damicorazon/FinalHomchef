@@ -39,11 +39,19 @@ class CompteController extends AbstractController
 
     public function edit(Request $request, Encoder $encoder, Membre $membre): Response
     {
-        $formMembre = $this->createForm(ModifMembreType::class, $membre);
-        $formMembre->handleRequest($request);
+        $formModifMembre = $this->createForm(ModifMembreType::class, $membre);
+        $formModifMembre->handleRequest($request);
 
-        if ($formMembre->isSubmitted() && $formMembre->isValid()) {
-            $mdp = $formMembre->get("password")->getData();
+        if ($formModifMembre->isSubmitted() && $formModifMembre->isValid()) {
+            if( $fichier = $formModifMembre->get("photo")->getData() ){
+                $destination = $this->getParameter("dossier_images");
+                $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
+                $nouveauNom = str_replace(" ", "_", $nomFichier);
+                $nouveauNom .= "_" . uniqid() . "." . $fichier->guessExtension();
+                $fichier->move($destination, $nouveauNom);
+                $membre->setPhoto($nouveauNom);
+            }
+            $mdp = $formModifMembre->get("password")->getData();
             if (trim($mdp)) {
                 $mdp = $encoder->encodePassword($membre, $mdp);
                 $membre->setPassword($mdp);
@@ -54,7 +62,7 @@ class CompteController extends AbstractController
         }
         return $this->render('compte/modifier.html.twig', [
             'membre' => $membre,
-            'formModifMembre' => $formMembre->createView(),
+            'formModifMembre' => $formModifMembre->createView(),
         ]);
     }
 }

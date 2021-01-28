@@ -11,6 +11,8 @@ use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ModifMembreType extends AbstractType
 {
@@ -18,6 +20,11 @@ class ModifMembreType extends AbstractType
     {
         $builder
             ->add('pseudo')
+            ->add('password', PasswordType::class, [
+                "label" => "Mot de passe",
+                "mapped" => false,
+                "required" => false,
+            ])
             ->add('nom')
             ->add('prenom')
             ->add('mail')
@@ -40,6 +47,11 @@ class ModifMembreType extends AbstractType
                         "maxSize" => "2048k",
                         "maxSizeMessage" => "Le fichier ne doit pas dépasser 2Mo"
                     ])
+                ]
+            ])
+            ->add('enregistrer', SubmitType::class, [
+                "attr" => [
+                    "class" => "btn btn-info"
                 ]
             ])
         ;

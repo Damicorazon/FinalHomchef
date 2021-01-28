@@ -106,7 +106,9 @@
 </section>
 <section id="centreFooter" class="flex">
 	<div id="centreFoot1" class="flex">
-		<img src="/photos/footer/logoportraitblanc.png" alt="Logo du site HomChef représentant une toque sur fond blanc" id="logoSiteFoot">
+	<a href="{{ path("accueil") }}">
+		<img src="{{ asset("photos/header/logopaysageblanc.png") }}" alt="Logo du site HomChef représentant une toque sur fond blanc" id="logoSiteFoot">
+	</a>
 		<p>1 rue Pasquier<br>
 			75008 PARIS<br>
 			01 39 00 56 78
@@ -123,8 +125,8 @@
 		<h3 class="h3Foot">Général</h3>
 		<div id="premierLienFoot" class="flex">
 			<a href="index.php">Accueil</a><br>
-			<a id="connection2" href="#menu">Connexion</a><br>
-			<a href="recrutement.php">Recrutement</a><br>
+			<a id="connection2" href="{{ path("app_login") }}">Connexion</a><br>
+			<a href="">Recrutement</a><br>
 			<a href="{{ path("recrutement_chef") }}">Vous êtes chef?</a>
 		</div>
 	</div>
@@ -132,10 +134,10 @@
 		<div class="traitFoot"></div>
 		<h3 class="h3Foot">Ou sommes nous</h3>
 		<div id="deuxiemeLienFoot" class="flex">
-			<a href="">Paris</a><br>
-			<a href="">Marseille</a><br>
-			<a href="">Lyon</a><br>
-			<a href="">Bordeaux</a><br>
+			<a href="{{ path("accueil") }}">Paris</a><br>
+			<a href="{{ path("accueil") }}">Marseille</a><br>
+			<a href="{{ path("accueil") }}">Lyon</a><br>
+			<a href="{{ path("accueil") }}">Bordeaux</a><br>
 		</div>
 	</div>
 	<div id="centreFoot4">
