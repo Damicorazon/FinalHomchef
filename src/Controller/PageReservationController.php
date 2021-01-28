@@ -5,17 +5,18 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\MembreRepository;
+use App\Entity\Membre;
 
 class PageReservationController extends AbstractController
 {
     /**
-     * @Route("/reservation", name="page_reservation")
+     * @Route("/reservation/{id}", name="page_reservation", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function index(MembreRepository $membreR): Response
+    public function index(Membre $membre): Response
     {
+        //dd($membre);
         return $this->render('page_reservation/index.html.twig', [
-            'controller_name' => 'PageReservationController',
+            'membre' => $membre,
         ]);
     }
 }

@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réserver votre menu
-{% endblock %}
+{% block title %}Réserver votre menu{% endblock %}
 
 {% block body %}
-
 	<body id="bodyPageReservation">
 
 		<section id="pageReservation">
-			<h1>Beau et bon</h1>
+
+			<h1>Nom menu</h1>
 		</section>
 		<div id="container" class="flex">
 			<div id="contenuReservation">
@@ -17,25 +16,27 @@
 						<h2>DESCRIPTION DU SERVICE</h2>
 						<p>Le chef vient avec le nécessaire pour la préparation du repas à l’heure convenue.<br>Il prépare le repas dans votre cuisine, sert les convives à table et nettoie la cuisine<br>avant de partir.</p>
 						<hr class="traitReservation"></hr>
-					<h2>AMUSE-BOUCHE</h2>
-					<p>Amuse-bouche du moment</p>
+
+				{% for menu in membre.menus %}
+					<h2>ENTRÉE</h2>
+						<p>{{menu.entree}}</p>
 					<hr class="traitReservation"></hr>
-				<h2>ENTRÉE</h2>
-				<p>Rillettes aux deux saumons, pickles de radis noir et mesclun aux herbes</p>
-				<hr class="traitReservation"></hr>
-			<h2>PLAT</h2>
-			<p>Joue de bœuf braisée au vin de truffe, spaetzles en persillade</p>
-			<hr class="traitReservation"></hr>
-		<h2>DESSERT</h2>
-		<p>Crumble aux fruits de saison.</p>
+					<h2>PLAT</h2>
+						<p>{{menu.plat}}/p>
+					<hr class="traitReservation"></hr>
+					<h2>DESSERT</h2>
+						<p>{{menu.dessert}}</p>
+		{% endfor %}
 		<hr class="traitReservation">
+
 	</body>
+
 </hr>
 <div id="profilchefReservation" class="flexSansWrap">
-	<img src="photos/pageChefs/damiensimon.png" alt="Photo de profil du chef Damien Simon" id="photoChefReservation">
+	<img src="{{ asset("img/" ~ membre.photo) }}" alt="Photo de profil du chef Damien Simon" id="photoChefReservation" class="taillePhotoChef">
 	<div id="imageEtTexte">
-		<p>A propos du chef...<br><strong>Damien Simon</strong><br>
-			<a href="#">Voir le profil du chef</a>
+		<p>A propos du chef...<br><strong>{{membre.prenom}} {{membre.nom}}</strong><br>
+			<a href="{{ path("page_chef", {"id": membre.id }) }}">Voir le profil du chef</a>
 		</p>
 	</div>
 	<div id="etoileReservation" class="flex etoilesPageReservation">
@@ -164,7 +165,7 @@
 			<button id="boutonReservation">RESERVER CETTE PRESTATION</button>
 		</div>
 		<div class="fondGris">
-			<img src="photos/pageReservation/moyensPaiement.png" alt="images des différents cartes bancaires acceptées" id="moyensPaiement">
+			<img src="{{asset("photos/pageReservation/moyensPaiement.png") }}" alt="images des différents cartes bancaires acceptées" id="moyensPaiement">
 			<div id="reservezCeChef">
 				<h3>RESERVEZ VITE CE CHEF POUR BLOQUER SON AGENDA...</h3>
 				<p>Suppléments (vins, plateau fromage) possibles après la réservation</p>
