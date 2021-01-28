@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\MembreRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Membre;
-use App\Form\MembreType;
+use App\Form\ModifMembreType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface as Encoder;
 
 class CompteController extends AbstractController
@@ -39,7 +39,7 @@ class CompteController extends AbstractController
 
     public function edit(Request $request, Encoder $encoder, Membre $membre): Response
     {
-        $formMembre = $this->createForm(MembreType::class, $membre);
+        $formMembre = $this->createForm(ModifMembreType::class, $membre);
         $formMembre->handleRequest($request);
 
         if ($formMembre->isSubmitted() && $formMembre->isValid()) {
@@ -54,7 +54,7 @@ class CompteController extends AbstractController
         }
         return $this->render('compte/modifier.html.twig', [
             'membre' => $membre,
-            'formMembre' => $formMembre->createView(),
+            'formModifMembre' => $formMembre->createView(),
         ]);
     }
 }

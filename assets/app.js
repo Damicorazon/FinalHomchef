@@ -31,10 +31,8 @@ console.log(menu);
 
 burger.addEventListener('click', apparitionMenu);
 function apparitionMenu() {
-	console.log('La fonction se declenche !');
-	console.log(menu.style.display);
 
-if (menu.style.display === 'block') {
+if (menu.style.display == 'null') {
 
 menu.style.display = 'none';
 

@@ -86,7 +86,7 @@ class MembreController extends AbstractController
      */
     public function edit(Request $request, Encoder $encoder, Membre $membre): Response
     {
-        $formModifMembre = $this->createForm(ModifMembreType::class, $membre);
+        $formModifMembre = $this->createForm(MembreType::class, $membre);
         $formModifMembre->handleRequest($request);
         if ($formModifMembre->isSubmitted() && $formModifMembre->isValid()) {
             if( $fichier = $formModifMembre->get("photo")->getData() ){

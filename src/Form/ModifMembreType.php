@@ -18,20 +18,6 @@ class ModifMembreType extends AbstractType
     {
         $builder
             ->add('pseudo')
-            ->add('roles', ChoiceType::class, [
-                "choices" => [
-                    "Convive" => "ROLE_CLIENT",
-                    "Chef" => "ROLE_CHEF",
-                    "Admin" => "ROLE_ADMIN"
-                ],
-                "multiple" => false,
-                "expanded" => true
-            ])
-            ->add('password', PasswordType::class, [
-                "label" => "Mot de passe*",
-                "required" => false,
-                "mapped" => false
-            ])
             ->add('nom')
             ->add('prenom')
             ->add('mail')
@@ -57,16 +43,6 @@ class ModifMembreType extends AbstractType
                 ]
             ])
         ;
-
-        $builder->get('roles')
-            ->addModelTransformer(new CallbackTransformer(
-                function ($rolesArray) {
-                     return count($rolesArray)? $rolesArray[0]: null;
-                },
-                function ($rolesString) {
-                     return [$rolesString];
-                }
-        ));
     
     }
 
