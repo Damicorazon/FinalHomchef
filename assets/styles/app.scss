@@ -462,11 +462,12 @@ footer{
 	text-align: center;
 	padding: 5px;
 }
-#photoDamienSimon{
-	width: 140px;
+.taillePhotoChef{
     display: block;
     margin: auto;
-    padding-bottom: 25px;
+    width: 140px;
+    clip-path: ellipse(50% 36%);
+    background-position: center;
 }
 #moyenne{
 	font-size: 12px;
@@ -548,18 +549,18 @@ footer{
 	color:#D1920E;
 }
 .prix{
-	position: absolute;
-    top: 66%;
+	// position: absolute;
+    top: -132px;
     left: 68%;
     background: #F4F0F0;
-	border:1px solid #F4F0F0;
-	padding:10px 20px;
-	border-radius: 10px;
-	font-size: 18px;
+		border:1px solid #F4F0F0;
+		padding:10px 20px;
+		border-radius: 10px;
+		font-size: 18px;
+		width: 193px;
 }
 .bouton{
-	position: absolute;
-    top: 84%;
+    top: -109px;
     left: 68%;
 }
 
@@ -1543,8 +1544,14 @@ border: 1px solid black;
 .bodyAjouterMenu{
 	margin-top: 10%;
 }
+.tailleColonneMail{
+	width: 215px;
+}
+.tailleColonneTelephone{
+	width: 103px;
+}
 
-/*******************TABLEAU DE BORD************************/
+/*******************PAGE CONNEXION************************/
 
 #bodyConnexion {
 	margin-top: 10%;
