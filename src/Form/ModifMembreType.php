@@ -6,15 +6,13 @@ use App\Entity\Membre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\Image;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class MembreType extends AbstractType
+class ModifMembreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -30,43 +28,22 @@ class MembreType extends AbstractType
                 "expanded" => true
             ])
             ->add('password', PasswordType::class, [
-                "label" => "Mot de passe",
+                "label" => "Mot de passe*",
+                "required" => false,
                 "mapped" => false
             ])
-            ->add('nom', TextType::class, [
-                "required" => false
-            ])
-            ->add('prenom', TextType::class, [
-                "required" => false
-            ])
+            ->add('nom')
+            ->add('prenom')
             ->add('mail')
-            ->add('ville', TextType::class, [
-                "required" => false
-            ])
-            ->add('cp', TextType::class, [
-                "required" => false
-            ])
-            ->add('adresse', TextType::class, [
-                "required" => false
-            ])
-            ->add('telephone', TextType::class, [
-                "required" => false
-            ])
-            ->add('siret', TextType::class, [
-                "required" => false
-            ])
-            ->add('tva', TextType::class, [
-                "required" => false
-            ])
-            ->add('descriptif', TextType::class, [
-                "required" => false
-            ])
-            ->add('langue', TextType::class, [
-                "required" => false
-            ])
-            ->add('zone', TextType::class, [
-                "required" => false
-            ])
+            ->add('ville')
+            ->add('cp')
+            ->add('adresse')
+            ->add('telephone')
+            ->add('siret')
+            ->add('tva')
+            ->add('descriptif')
+            ->add('langue')
+            ->add('zone')
             ->add('photo', FileType::class, [
                 "mapped" => false,
                 "required" => false,
@@ -77,11 +54,6 @@ class MembreType extends AbstractType
                         "maxSize" => "2048k",
                         "maxSizeMessage" => "Le fichier ne doit pas dépasser 2Mo"
                     ])
-                ]
-            ])
-            ->add('enregistrer', SubmitType::class, [
-                "attr" => [
-                    "class" => "btn btn-info"
                 ]
             ])
         ;
@@ -95,6 +67,7 @@ class MembreType extends AbstractType
                      return [$rolesString];
                 }
         ));
+    
     }
 
     public function configureOptions(OptionsResolver $resolver)
