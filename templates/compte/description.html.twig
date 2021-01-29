@@ -10,20 +10,26 @@
 <ul class="col-4 row justify-content-start nav nav-tabs">
 			<li>
 				<a href="{{ path("compte", {"id": membre.id }) }}" class="nav-link">
-					<strong>Mes informations</strong>
+					<strong>Informations principal</strong>
 				</a>
 			</li>
+			{% if is_granted("ROLE_CHEF") %}
 			<li>
 				<a href="{{ path("compte_description", {"id": membre.id }) }}" class="nav-link active">
-					<strong>Ma description</strong>
+					<strong>Complémentaires</strong>
 				</a>
 			</li>
+			{% endif %}
 		</ul>
 
 		<ul class="list-group list-group-flush">
-		<li class="list-group-item">
-				<strong>Votre photo :</strong>
-				<img src="{{ asset("img/" ~ membre.photo) }}"alt="Vous n'avez pas mis de photo" class="taillePhotoChef">
+					<li class="list-group-item">
+				<strong>Numéro de Siret :</strong>
+				{{ membre.siret}}
+			</li>
+			<li class="list-group-item">
+				<strong>Numéro de TVA :</strong>
+				{{ membre.tva}}
 			</li>
 			<li class="list-group-item">
 				<strong>Votre description :</strong>

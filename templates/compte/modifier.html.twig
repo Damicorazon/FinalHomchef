@@ -7,13 +7,10 @@
 		<div class="container">
 			<h1>Modifier mes informations</h1>
 
-
-			{{ form_start(formModifMembre) }}
-			{{ form_errors(formModifMembre) }}
-			{{ form_widget(formModifMembre) }}
-
-			{{ form_end(formModifMembre) }}
-
+				{{ form_start(formModifMembre) }}
+				{{ form_widget(formModifMembre) }}
+				{{ form_end(formModifMembre) }}
+				
     <div>
       <a href="{{path("compte", {"id": app.user.id})}}" class="btn btn-outline-info mb-5 mt-5">Revenir à mes informations</a>
     </div>

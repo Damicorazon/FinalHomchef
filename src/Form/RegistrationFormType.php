@@ -11,8 +11,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\CallbackTransformer;
 
 class RegistrationFormType extends AbstractType
 {
@@ -37,14 +35,6 @@ class RegistrationFormType extends AbstractType
                 ],
                 "label" => "Mot de passe"
             ])
-            ->add('roles', ChoiceType::class, [
-                "choices" => [
-                    "Convive" => "ROLE_CLIENT",
-                    "Chef" => "ROLE_CHEF"
-                ],
-                "multiple" => false,
-                "expanded" => true
-            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -56,15 +46,6 @@ class RegistrationFormType extends AbstractType
             ])
         ;
 
-        $builder->get('roles')
-            ->addModelTransformer(new CallbackTransformer(
-                function ($rolesArray) {
-                     return count($rolesArray)? $rolesArray[0]: null;
-                },
-                function ($rolesString) {
-                     return [$rolesString];
-                }
-        ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

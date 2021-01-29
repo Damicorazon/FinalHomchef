@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Membre;
 use App\Form\MembreType;
-use App\Form\ModifMembreType;
+use App\Form\ModifMembreChefType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface as Encoder;
 
 
@@ -55,7 +55,7 @@ class MembreController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/membre/ajouter", name="membre_ajouter")
      */
     public function nouveau(Request $request, EntityManagerInterface $em, Encoder $encoder){
@@ -86,7 +86,7 @@ class MembreController extends AbstractController
      */
     public function edit(Request $request, Encoder $encoder, Membre $membre): Response
     {
-        $formModifMembre = $this->createForm(MembreType::class, $membre);
+        $formModifMembre = $this->createForm(ModifMembreChefType::class, $membre);
         $formModifMembre->handleRequest($request);
         if ($formModifMembre->isSubmitted() && $formModifMembre->isValid()) {
             if( $fichier = $formModifMembre->get("photo")->getData() ){
