@@ -22,7 +22,7 @@
 			<a href="{{ path("accueil") }}">
 			<img id="logoHeader" src="{{ asset("photos/header/logopaysageblanc.png") }}" alt="Logo du site HomChef représentant une toque sur fond blanc">
 			</a>
-			<nav>
+			<nav id="menu">
 				<ul>
 				{% if is_granted("IS_AUTHENTICATED_FULLY") %}
 						<li>
@@ -88,7 +88,7 @@
 					{% endif %}
 				</ul>
 			</nav>
-		<img src="/photos/header/burger.png" id="burger" class="mobile" alt="Icone avec trois traits blanc horizontaux">
+		<img src="{{asset("photos/header/burger.png") }}" id="burger" class="mobile" alt="Icone avec trois traits blanc horizontaux">
 
 	</header>
 
