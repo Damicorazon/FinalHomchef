@@ -14,56 +14,38 @@
 
 	<div class="divFormRecrutement">
 
-		<form action="" method="post" class="formRecrutement">
+		<form action="" method="POST" class="formRecrutement">
 			<h1>REJOIGNEZ HOMCHEF</h1>
 
 			<div class="recrut">
 				<div>
-					<label for="nom"></label>
+
 				</div>
-				<div><input type="text" name="nom" id="nom" placeholder="Nom"></div>
+				<div><input type="text" name="pseudo" id="pseudo" placeholder="Nom" value="{{ membre is defined ? membre.pseudo : "" }}"></div>
 			</div>
 
 			<div class="recrut">
-				<div>
-					<label for="prenom"></label>
-				</div>
-				<div><input type="text" name="prenom" id="prenom" placeholder="Prénom"></div>
+				<div><input type="text" name="prenom" id="prenom" placeholder="Prénom" value="{{ membre is defined ? membre.prenom : "" }}"></div>
 			</div>
 
 			<div class="recrut">
-				<div>
-					<label for="ville"></label>
-				</div>
-				<div><input type="text" name="ville" id="ville" placeholder="Votre Ville"></div>
+				<div><input type="text" name="ville" id="ville" placeholder="Votre Ville" value="{{ membre is defined ? membre.ville : "" }}"></div>
 			</div>
 
 			<div class="recrut">
-				<div>
-					<label for="code_postal"></label>
-				</div>
-				<div><input type="text" name="code_postal" id="code_postal" placeholder="Code Postal"></div>
+				<div><input type="text" name="code_postal" id="code_postal" placeholder="Code Postal" value="{{ membre is defined ? membre.cp : "" }}"></div>
 			</div>
 
 			<div class="recrut">
-				<div>
-					<label for="telephone"></label>
-				</div>
-				<div><input type="text" name="telephone" id="telephone" placeholder="Téléphone"></div>
+				<div><input type="text" name="telephone" id="telephone" placeholder="Téléphone" value="{{ membre is defined ? membre.telephone : "" }}"></div>
 			</div>
 
 			<div class="recrut">
-				<div>
-					<label for="email"></label>
-				</div>
-				<div><input type="text" name="email" id="email" placeholder="E-mail"></div>
+				<div><input type="text" name="email" id="email" placeholder="E-mail" value="{{ membre is defined ? membre.mail : "" }}"></div>
 			</div>
 
 			<div class="recrut">
-				<div>
-					<label for="mdp"></label>
-				</div>
-				<div><input type="password" name="mdp" id="mdp" placeholder="Mot de passe"></div>
+				<div><input type="password" name="mdp" id="mdp" placeholder="Mot de passe" value="{{ membre is defined ? membre.password : "" }}"></div>
 			</div>
 
 			<div class="recrutSub">
