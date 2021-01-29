@@ -55,7 +55,7 @@ class MembreController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/membre/ajouter", name="membre_ajouter")
      */
     public function nouveau(Request $request, EntityManagerInterface $em, Encoder $encoder){

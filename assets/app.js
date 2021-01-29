@@ -58,6 +58,7 @@ function disparitionSlogan(){
   menu.style.display === 'none';
   slogan.style.display='block';
  }
+
 }
 
 // MODIFIER LE NOMBRE DE CONVIVES DYNAMIQUEMENT SUR PAGE RESERVATION :
