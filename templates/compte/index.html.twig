@@ -61,9 +61,15 @@
 			</li>
 		</ul>
 	</table>
+	{% if is_granted("ROLE_CHEF") %}
+	<div>
+		<a href="{{ path("compte_modifierChef", {"id": membre.id }) }}" class="btn btn-outline-info mb-5 mt-5">Modifier mes informations</a>
+	</div>
+	{% else %}
 	<div>
 		<a href="{{ path("compte_modifier", {"id": membre.id }) }}" class="btn btn-outline-info mb-5 mt-5">Modifier mes informations</a>
 	</div>
+	{% endif %}
 </div>
 {% endblock %}
 

@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Membre;
 use App\Form\ModifMembreClientType;
+use App\Form\ModifMembreChefType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface as Encoder;
 
 class CompteController extends AbstractController
@@ -61,6 +62,39 @@ class CompteController extends AbstractController
         return $this->render('compte/modifier.html.twig', [
             'membre' => $membre,
             'formModifMembre' => $formModifMembre->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/compte/modifier/{id}", name="compte_modifierChef", methods={"GET","POST"})
+     */
+
+    public function editChef(Request $request, Encoder $encoder, Membre $membre): Response
+    {
+        $formModifMembre = $this->createForm(ModifMembreChefType::class, $membre);
+        $formModifMembre->handleRequest($request);
+
+        if ($formModifMembre->isSubmitted() && $formModifMembre->isValid()) {
+            if( $fichier = $formModifMembre->get("photo")->getData() ){
+                $destination = $this->getParameter("dossier_images");
+                $nomFichier = pathinfo($fichier->getClientOriginalName(), PATHINFO_FILENAME);
+                $nouveauNom = str_replace(" ", "_", $nomFichier);
+                $nouveauNom .= "_" . uniqid() . "." . $fichier->guessExtension();
+                $fichier->move($destination, $nouveauNom);
+                $membre->setPhoto($nouveauNom);
+            }
+            $mdp = $formModifMembre->get("password")->getData();
+            if (trim($mdp)) {
+                $mdp = $encoder->encodePassword($membre, $mdp);
+                $membre->setPassword($mdp);
+            }
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('compte');
+        }
+        return $this->render('compte/modifierChef.html.twig', [
+            'membre' => $membre,
+            'formModifMembreChef' => $formModifMembre->createView(),
         ]);
     }
 }
