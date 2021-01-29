@@ -65,7 +65,7 @@ class MenuController extends AbstractController
             $menu->setMembre($membre);
             $em->persist($menu);
             $em->flush();
-            $this->addFlash("success", "Le nouveau menu a bien été ajouté");
+            $this->addFlash("alert alert-info", "Le nouveau menu a bien été ajouté");
             return $this->redirectToRoute("menu");
         }
         return $this->render("menu/ajouter.html.twig", ["formMenu" => $formMenu->createView()]);

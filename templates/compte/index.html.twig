@@ -7,15 +7,29 @@
 
 		<h1>Bonjour {{ membre.prenom }}</h1>
 
-		<ul class="col-4 row justify-content-start nav nav-tabs">
+<ul class="col-4 row justify-content-start nav nav-tabs">
+	{% if is_granted("ROLE_CHEF") %}
+
 		<li>
-			<a href="{{ path("compte", {"id": membre.id }) }}" class="nav-link active"><strong>Mes informations</strong>
+			<a href="{{ path("compte", {"id": membre.id }) }}" class="nav-link active">
+				<strong>Mes informations</strong>
 			</a>
 		</li>
 		<li>
-			<a href="{{ path("compte_description", {"id": membre.id }) }}" class="nav-link"><strong>Ma description</strong></a>
+			<a href="{{ path("compte_description", {"id": membre.id }) }}" class="nav-link">
+				<strong>Ma description</strong>
+			</a>
 		</li>
-		</ul>
+
+	{% else %}
+
+		<li>
+			<a href="{{ path("compte", {"id": membre.id }) }}" class="nav-link">
+				<strong>Mes informations</strong>
+			</a>
+		</li>
+		{% endif %}
+</ul>
 
 		<ul class="list-group list-group-flush">
 		<li class="list-group-item">

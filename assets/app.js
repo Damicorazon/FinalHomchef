@@ -74,14 +74,4 @@ function disparitionSlogan(){
     paragraphe.innerHTML=nbConvive.value;
   }
 
-
-
-
-
-
-
-
-
-
-
 });
