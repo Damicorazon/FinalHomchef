@@ -59,3 +59,29 @@ function disparitionSlogan(){
   slogan.style.display='block';
  }
 }
+
+// MODIFIER LE NOMBRE DE CONVIVES DYNAMIQUEMENT SUR PAGE RESERVATION :
+
+  var nbConvive = document.getElementById('nbConvive');
+  console.log(nbConvive);
+
+  var paragraphe = document.getElementById('paragraphe');
+  console.log(paragraphe);
+
+  nbConvive.addEventListener('input', changeNbConvive);
+  function changeNbConvive() {
+    console.log('la fonction se déclenche');
+    paragraphe.innerHTML=nbConvive.value;
+  }
+
+
+
+
+
+
+
+
+
+
+
+});
