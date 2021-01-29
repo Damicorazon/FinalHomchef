@@ -5,11 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use App\Repository\MembreRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Membre;
-use App\Form\ModifMembreType;
+use App\Form\ModifMembreClientType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface as Encoder;
 
 class CompteController extends AbstractController
@@ -39,7 +37,7 @@ class CompteController extends AbstractController
 
     public function edit(Request $request, Encoder $encoder, Membre $membre): Response
     {
-        $formModifMembre = $this->createForm(ModifMembreType::class, $membre);
+        $formModifMembre = $this->createForm(ModifMembreClientType::class, $membre);
         $formModifMembre->handleRequest($request);
 
         if ($formModifMembre->isSubmitted() && $formModifMembre->isValid()) {
