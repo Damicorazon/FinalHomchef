@@ -20,6 +20,7 @@ class PageReservationController extends AbstractController
     {
         $menu = $menu->find($id);
         $membre = $menu->getMembre($id);
+        $nb_personne = [];
         // dd($menu);
         return $this->render('page_reservation/index.html.twig', [
             'menu' => $menu,
