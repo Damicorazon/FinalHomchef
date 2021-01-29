@@ -50,7 +50,26 @@
         </thead>
 
         <tbody>
-
+    {% if is_granted("ROLE_ADMIN") %}
+        {% for menu in nombre_menu %}
+            <tr class="contourMenuG">
+                <td>{{ menu.nom }}</td>
+                <td>{{ menu.specialite }}</td>
+                <td>{{ menu.entree }}</td>
+                <td>{{ menu.plat }}</td>
+                <td>{{ menu.dessert }}</td>
+                <td>{{ menu.prix }}</td>
+                <td>
+                    <img class="BoardPhoto" src="{{ asset("img/" ~ menu.photo) }}" alt="pas de photo">
+                </td>
+                <td>
+                    <a href=" {{ path("menu_fiche", {"id": menu.id }) }}"class="btn btn-outline-info">Détails</a>
+                    <a href="{{ path("menu_modifier", {"id": menu.id }) }}"class="btn btn-outline-info">Modifier</a>
+                    <a href=" {{ path("menu_supprimer", {"id": menu.id }) }}"class="btn btn-outline-info">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
         {% for menu in app.user.menus %}
             <tr class="contourMenuG">
                 <td>{{ menu.nom }}</td>
@@ -69,7 +88,7 @@
                 </td>
             </tr>
         {% endfor %}
-
+    {% endif %}
         </tbody>
     </table>
 </body>
