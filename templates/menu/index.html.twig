@@ -10,18 +10,25 @@
 
 <div class="container">
 
-{% set comptage = [] %}
+{% if is_granted("ROLE_ADMIN") %}
 
-{% for menu in nombre_menu %}
-    {% if app.user.id == menu.membre.id %}
-        {% set comptage = comptage|merge([menu]) %}
-    {% endif %}
-{% endfor %}
-{% if comptage|length == 0 %}
-<p class="alert alert-info">Vous avez actuellement {{ comptage|length }} menus. Offrez nous vos meilleurs mets!</p>
+    <p class="alert alert-info">Admin</p>
+
 {% else %}
-<p class="alert alert-info">Bravo ! Vous avez actuellement {{ comptage|length }} menus à offrir !</p>
     
+    {% set comptage = [] %}
+
+    {% for menu in nombre_menu %}
+        {% if app.user.id == menu.membre.id %}
+            {% set comptage = comptage|merge([menu]) %}
+        {% endif %}
+    {% endfor %}
+    {% if comptage|length == 0 %}
+    <p class="alert alert-info">Vous avez actuellement {{ comptage|length }} menus. Offrez nous vos meilleurs mets!</p>
+    {% else %}
+    <p class="alert alert-info">Bravo ! Vous avez actuellement {{ comptage|length }} menus à offrir !</p>
+
+    {% endif %}
 {% endif %}
 <ul class="col-4 row justify-content-start nav nav-tabs">
 
