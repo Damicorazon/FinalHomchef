@@ -15,7 +15,7 @@ class RecrutementChefController extends AbstractController
     /**
      * @Route("/recrutement", name="recrutement_chef")
      */
-    public function index(Request $request, EntityManagerInterface $em): Response
+    public function index(Request $request, EntityManagerInterface $em, Encoder $encoder): Response
     {
 
         if($request->request->has("pseudo")) {
@@ -52,9 +52,10 @@ class RecrutementChefController extends AbstractController
             $nouveauMembre->setPassword($mdp);
             $nouveauMembre->setRoles(["ROLE_CHEF"]);
 
+            $nouveauMembre->setPassword($encoder->encodePassword($nouveauMembre, $nouveauMembre->getPassword() ) );
             $em->persist($nouveauMembre);
             $em->flush();
-            $this->addFlash("success", "Le nouveau livre a bien été enregistré");
+            // $this->addFlash("success", "Le nouveau livre a bien été enregistré");
             return $this->redirectToRoute('accueil');
         }
         
