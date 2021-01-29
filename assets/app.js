@@ -74,4 +74,25 @@ function disparitionSlogan(){
     paragraphe.innerHTML=nbConvive.value;
   }
 
+  var prixUnitaire = document.getElementById('placementPPanier');
+  console.log(prixUnitaire);
+
+  // var resultat = document.getElementById('placementPPanier1');
+  // console.log(resultat);
+
+
+
+  nbConvive.addEventListener('click', calcul1);
+    function calcul1(){
+      console.log('la fonction se déclenche');
+      var nbConvive = document.getElementById('nbConvive').value;
+      console.log(nbConvive);
+      var prixUnitaire = document.getElementById('placementPPanier').value;
+      console.log(prixUnitaire);
+
+      var resultatCaclul = nbConvive * prixUnitaire
+
+      document.getElementById('placementPPanier1').innerHTML = resultatCaclul;
+    }
+
 });
