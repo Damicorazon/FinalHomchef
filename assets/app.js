@@ -39,7 +39,7 @@ menu.style.display = 'none';
 burger.src = 'img/burger.png';
  	} else {
  		menu.style.display = 'block';
-		burger.src = 'img/close.png';
+		burger.src = 'photos/header/close.png';
 	}
 }
 
