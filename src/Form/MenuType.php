@@ -41,6 +41,7 @@ class MenuType extends AbstractType
             ->add('prix')
             ->add('photo', FileType::class, [
                 "mapped" => false,
+                "required" => false,
                 "constraints" => [
                     new Image([
                         "mimeTypes" => ["image/png", "image/jpeg", "image/gif"],

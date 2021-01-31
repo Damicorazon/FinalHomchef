@@ -39,7 +39,6 @@ class MenuController extends AbstractController
     public function fiche(MenuRepository $menu, $id)
     {
         $menu = $menu->find($id);
-        dd($menu);
         return $this->render('menu/fiche.html.twig', [
             'menu' => $menu,
         ]);

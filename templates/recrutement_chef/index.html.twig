@@ -21,7 +21,7 @@
 				<div>
 
 				</div>
-				<div><input type="text" name="pseudo" id="pseudo" placeholder="Nom" value="{{ membre is defined ? membre.pseudo : "" }}"></div>
+				<div><input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" value="{{ membre is defined ? membre.pseudo : "" }}"></div>
 			</div>
 
 			<div class="recrut">
@@ -123,7 +123,7 @@
 	<div class="recrutSection5">
 		<h3>Prêt(e) à nous rejoindre ?</h3>
 		<p>Après votre inscription, vous serez pris(e) en charge par un conseiller de notre équipe qui répondra à toutes vos questions.</p>
-		<a href="recrutement.php">REJOIGNEZ HOMCHEF</a>
+		<a href="{{ path("recrutement_chef") }}">REJOIGNEZ HOMCHEF</a>
 	</div>
 </div>
 
