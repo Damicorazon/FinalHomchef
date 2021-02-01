@@ -22,13 +22,27 @@ class ModifMembreClientType extends AbstractType
                 "mapped" => false,
                 "required" => false,
             ])
-            ->add('nom')
-            ->add('prenom')
-            ->add('mail')
-            ->add('ville')
-            ->add('cp')
-            ->add('adresse')
-            ->add('telephone')
+            ->add('nom', TextType::class, [
+                "required" => false
+            ])
+            ->add('prenom', TextType::class, [
+                "required" => false
+            ])
+            ->add('mail', TextType::class, [
+                "required" => false
+            ])
+            ->add('ville', TextType::class, [
+                "required" => false
+            ])
+            ->add('cp', TextType::class, [
+                "required" => false
+            ])
+            ->add('adresse', TextType::class, [
+                "required" => false
+            ])
+            ->add('telephone', TextType::class, [
+                "required" => false
+            ])
             ->add('photo', FileType::class, [
                 "mapped" => false,
                 "required" => false,

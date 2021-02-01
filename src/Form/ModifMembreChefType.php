@@ -24,18 +24,40 @@ class ModifMembreChefType extends AbstractType
             "mapped" => false,
             "required" => false,
         ])
-        ->add('nom')
-        ->add('prenom')
+        ->add('nom', TextType::class, [
+            "required" => false
+        ])
+        ->add('prenom', TextType::class, [
+            "required" => false
+        ])
         ->add('mail')
-        ->add('ville')
-        ->add('cp')
-        ->add('adresse')
-        ->add('telephone')
-        ->add('siret')
-        ->add('tva')
-        ->add('descriptif')
-        ->add('langue')
-        ->add('zone')
+        ->add('ville', TextType::class, [
+            "required" => false
+        ])
+        ->add('cp', TextType::class, [
+            "required" => false
+        ])
+        ->add('adresse', TextType::class, [
+            "required" => false
+        ])
+        ->add('telephone', TextType::class, [
+            "required" => false
+        ])
+        ->add('siret', TextType::class, [
+            "required" => false
+        ])
+        ->add('tva', TextType::class, [
+            "required" => false
+        ])
+        ->add('descriptif', TextType::class, [
+            "required" => false
+        ])
+        ->add('langue', TextType::class, [
+            "required" => false
+        ])
+        ->add('zone', TextType::class, [
+            "required" => false
+        ])
         ->add('photo', FileType::class, [
             "mapped" => false,
             "required" => false,

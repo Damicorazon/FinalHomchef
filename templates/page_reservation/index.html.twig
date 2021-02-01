@@ -33,10 +33,10 @@
 
 </hr>
 <div id="profilchefReservation" class="flexSansWrap">
-	<img src="{{ asset("img/" ~ membre.photo) }}" alt="Photo de profil du chef Damien Simon" id="photoChefReservation" class="taillePhotoChef">
+	<img src="{{ asset("img/" ~ menu.membre.photo) }}" alt="Photo de profil du chef Damien Simon" id="photoChefReservation" class="taillePhotoChef">
 	<div id="imageEtTexte">
-		<p>A propos du chef...<br><strong>{{membre.prenom}} {{membre.nom}}</strong><br>
-			<a href="{{ path("page_chef", {"id": membre.id }) }}">Voir le profil du chef</a>
+		<p>A propos du chef...<br><strong>{{menu.membre.prenom}} {{menu.membre.nom}}</strong><br>
+			<a href="{{ path("page_chef", {"id": menu.membre.id }) }}">Voir le profil du chef</a>
 		</p>
 	</div>
 	<div id="etoileReservation" class="flex etoilesPageReservation">

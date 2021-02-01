@@ -14,14 +14,14 @@ class PageReservationController extends AbstractController
     /**
      * @Route("/reservation/{id}", name="page_reservation")
      */
-    public function index(Membre $membre, MenuRepository $menu, $id): Response
+    public function index(MenuRepository $menu, $id): Response
     {
         $menu = $menu->find($id);
-        $membre = $menu->getMembre($id);
+        // $membre = $menu->getMembre($id);
         // dd($menu);
         return $this->render('page_reservation/index.html.twig', [
             'menu' => $menu,
-            'membre' => $membre
+            // 'membre' => $membre
         ]);
     }
 }
