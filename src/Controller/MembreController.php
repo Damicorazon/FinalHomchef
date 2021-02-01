@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface as Enco
 
     /**
      * @IsGranted("ROLE_ADMIN")
-     * 
+     *
      */
 class MembreController extends AbstractController
 {
@@ -71,11 +71,11 @@ class MembreController extends AbstractController
                 $fichier->move($destination, $nouveauNom);
                 $membre->setPhoto($nouveauNom);
             }
-            $membre->setPassword($encoder->encodePassword($membre, $membre->getPassword() ) );
+            $membre->setPassword($encoder->encodePassword($membre, $formMembre->get('password')->getData() ) );
             $entityManager = $this->getDoctrine()->getManager();
             $em->persist($membre);
             $em->flush();
-            $this->addFlash("success", "Le nouveau membre a bien été ajouté");
+            $this->addFlash("alert alert-info", "Le nouveau membre a bien été ajouté");
             return $this->redirectToRoute("membre");
         }
         return $this->render("membre/ajouter.html.twig", ["formMembre" => $formMembre->createView()]);
@@ -115,7 +115,7 @@ class MembreController extends AbstractController
 
     /**
      * @Route("/membre/supprimer/{id}", name="membre_supprimer")
-     * 
+     *
      */
     public function supprimer(EntityManagerInterface $em, Request $request, MembreRepository $membreR, $id) {
 
@@ -123,7 +123,7 @@ class MembreController extends AbstractController
         if($request->isMethod("POST") ){
             $em->remove($membreASupprimer);
             $em->flush();
-            $this->addFlash("success", "Le membre a bien été supprimé");
+            $this->addFlash("alert alert-info", "Le membre a bien été supprimé");
             return $this->redirectToRoute('membre');
         }
         return $this->render("membre/supprimer.html.twig", ["membre" => $membreASupprimer]);

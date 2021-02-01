@@ -91,7 +91,7 @@ class MenuController extends AbstractController
             }
             $em->persist($menu);
             $em->flush();
-            $this->addFlash("success", "Le menu a bien été modifié");
+            $this->addFlash("alert alert-info", "Le menu a bien été modifié");
             return $this->redirectToRoute("menu");
         }
         return $this->render("menu/ajouter.html.twig", ["formMenu" => $formMenu->createView()]);
@@ -107,7 +107,7 @@ class MenuController extends AbstractController
         if($request->isMethod("POST") ){
             $em->remove($menuASupprimer);
             $em->flush();
-            $this->addFlash("success", "Le menu a bien été supprimé");
+            $this->addFlash("alert alert-info", "Le menu a bien été supprimé");
             return $this->redirectToRoute('menu');
         }
         return $this->render("menu/supprimer.html.twig", ["menu" => $menuASupprimer]);
